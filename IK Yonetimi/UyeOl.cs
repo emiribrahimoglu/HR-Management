@@ -16,5 +16,11 @@ namespace IK_Yonetimi
         {
             InitializeComponent();
         }
+
+        private void uyeolBtn_Click(object sender, EventArgs e)
+        {
+            Random rd = new Random();
+            int basvuranNo = rd.Next(10000,99999);
+        }
     }
 }

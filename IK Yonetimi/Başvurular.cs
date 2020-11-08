@@ -1,34 +1,85 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IK_Yonetimi
 {
-    class Başvurular
+    public class Başvurular
     {
+        public static Basvuran kok;
         
+        public static void PreorderEkle(int basvuranNo, string ad, string adres, double tel, string mail,
+            DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
+            string pozisyon, int calismasuresi, string okulAd, string bolum,
+            DateTime baslangic, DateTime bitis, double notort)
+        {
+            /*En tepedeki kök boşsa direkt başvuran bilgisini ekle. Kök doluysa yeni başvurana belirlenen başvuranNo kökten büyük-küçük ise ona göre gezin, boş bulunan düğüme
+             yerleştir.
+             */
+            if (Başvurular.kok == null)
+            {
+                //Gelen bilgilerden direkt olarak kökü doldur.
+                Başvurular.kok = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
+            }
+            else
+            {
+                Basvuran eklenecek = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
+                PreorderEkle(Başvurular.kok, eklenecek);
+            }
+        }
+
+        public static void PreorderEkle(Basvuran yKok, Basvuran eklenecek)
+        {
+            if (!yKok.bosmu)
+            {
+                if (eklenecek.basvuranNo <= yKok.basvuranNo)
+                {
+                    PreorderEkle(yKok.sol, eklenecek);
+                }
+                else
+                {
+                    PreorderEkle(yKok.sag, eklenecek);
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (yKok.sol != null || yKok.sag != null)
+                    {
+                        eklenecek.sol = yKok.sol;
+                        eklenecek.sag = yKok.sag;
+                    }
+                }
+                catch (Exception)
+                { }
+                yKok = eklenecek;
+            }
+            
+        }
     }
 
     public class Basvuran
     {
-        bool bosmu = true;
-        int basvuranNo;
-        string ad;
-        string adres;
-        double tel;
-        string mail;
-        DateTime dt;
-        string ydil;
-        string ehliyet;
+        public bool bosmu = true;
+        public int basvuranNo;
+        public string ad;
+        public string adres;
+        public double tel;
+        public string mail;
+        public DateTime dt;
+        public string ydil;
+        public string ehliyet;
         public IsDeneyimi isDeneyimi;
         public EgitimDurumu egitimDurumu;
         public Basvuran sag;
         public Basvuran sol;
 
 
-        public Basvuran(string ad, string adres, double tel, string mail, 
+        public Basvuran(int basvuranNo, string ad, string adres, double tel, string mail, 
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres, 
             string pozisyon, int calismasuresi, string okulAd, string bolum, 
             DateTime baslangic, DateTime bitis, double notort)
@@ -36,8 +87,7 @@ namespace IK_Yonetimi
             if (bosmu)
             {
                 //silme islemi olayını burda halledicez. (bos hücreler)
-                Random rd = new Random();
-                this.basvuranNo = rd.Next(10000,99999);
+                this.basvuranNo = basvuranNo;
                 this.ad = ad;
                 this.adres = adres;
                 this.tel = tel;
@@ -156,5 +206,10 @@ namespace IK_Yonetimi
         {
             this.notort = notort;
         }
+    }
+
+    public class EklenecekBasvuran
+    {
+        
     }
 }
