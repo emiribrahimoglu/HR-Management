@@ -21,6 +21,9 @@ namespace IK_Yonetimi
         {
             Random rd = new Random();
             int basvuranNo = rd.Next(10000,99999);
+            Başvurular.PreorderEkle(basvuranNo, uyeadresTxt.Text, uyeadresTxt.Text, Convert.ToDouble(uyetelTxt.Text), uyeepostaTxt.Text, dogumTarihi.Value,
+                yabancidilTxt.Text, ehliyetTxt.Text, isyeriadTxt.Text, isyeriadresTxt.Text, isyeripozisyonTxt.Text, Convert.ToInt32(calismasuresiTxt.Text), okuladTxt.Text,
+                bolumTxt.Text, egitimBaslangicTarihi.Value, egitimBitisTarihi.Value, Convert.ToDouble(notortTxt.Text));
         }
     }
 }

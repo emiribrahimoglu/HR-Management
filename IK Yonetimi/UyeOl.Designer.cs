@@ -32,7 +32,6 @@
             this.uyeadresTxt = new System.Windows.Forms.TextBox();
             this.uyeepostaTxt = new System.Windows.Forms.TextBox();
             this.uyetelTxt = new System.Windows.Forms.TextBox();
-            this.uyedtTxt = new System.Windows.Forms.TextBox();
             this.yabancidilTxt = new System.Windows.Forms.TextBox();
             this.ehliyetTxt = new System.Windows.Forms.TextBox();
             this.isyeriadTxt = new System.Windows.Forms.TextBox();
@@ -60,18 +59,19 @@
             this.baslangicLbl = new System.Windows.Forms.Label();
             this.bolumTxt = new System.Windows.Forms.TextBox();
             this.bitisLbl = new System.Windows.Forms.Label();
-            this.baslangicTxt = new System.Windows.Forms.TextBox();
             this.notortLbl = new System.Windows.Forms.Label();
-            this.bitisTxt = new System.Windows.Forms.TextBox();
             this.notortTxt = new System.Windows.Forms.TextBox();
             this.egitim2Lbl = new System.Windows.Forms.Label();
             this.uyeolBtn = new System.Windows.Forms.Button();
+            this.dogumTarihi = new System.Windows.Forms.DateTimePicker();
+            this.egitimBaslangicTarihi = new System.Windows.Forms.DateTimePicker();
+            this.egitimBitisTarihi = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // uyeadTxt
             // 
             this.uyeadTxt.Location = new System.Drawing.Point(92, 64);
-            this.uyeadTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeadTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeadTxt.Name = "uyeadTxt";
             this.uyeadTxt.Size = new System.Drawing.Size(76, 20);
             this.uyeadTxt.TabIndex = 0;
@@ -79,7 +79,7 @@
             // uyeadresTxt
             // 
             this.uyeadresTxt.Location = new System.Drawing.Point(92, 94);
-            this.uyeadresTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeadresTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeadresTxt.Multiline = true;
             this.uyeadresTxt.Name = "uyeadresTxt";
             this.uyeadresTxt.Size = new System.Drawing.Size(103, 53);
@@ -88,7 +88,7 @@
             // uyeepostaTxt
             // 
             this.uyeepostaTxt.Location = new System.Drawing.Point(92, 207);
-            this.uyeepostaTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeepostaTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeepostaTxt.Name = "uyeepostaTxt";
             this.uyeepostaTxt.Size = new System.Drawing.Size(103, 20);
             this.uyeepostaTxt.TabIndex = 0;
@@ -96,23 +96,15 @@
             // uyetelTxt
             // 
             this.uyetelTxt.Location = new System.Drawing.Point(92, 177);
-            this.uyetelTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyetelTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyetelTxt.Name = "uyetelTxt";
             this.uyetelTxt.Size = new System.Drawing.Size(103, 20);
             this.uyetelTxt.TabIndex = 0;
             // 
-            // uyedtTxt
-            // 
-            this.uyedtTxt.Location = new System.Drawing.Point(92, 239);
-            this.uyedtTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.uyedtTxt.Name = "uyedtTxt";
-            this.uyedtTxt.Size = new System.Drawing.Size(103, 20);
-            this.uyedtTxt.TabIndex = 0;
-            // 
             // yabancidilTxt
             // 
             this.yabancidilTxt.Location = new System.Drawing.Point(92, 266);
-            this.yabancidilTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.yabancidilTxt.Margin = new System.Windows.Forms.Padding(2);
             this.yabancidilTxt.Name = "yabancidilTxt";
             this.yabancidilTxt.Size = new System.Drawing.Size(103, 20);
             this.yabancidilTxt.TabIndex = 0;
@@ -120,15 +112,15 @@
             // ehliyetTxt
             // 
             this.ehliyetTxt.Location = new System.Drawing.Point(92, 288);
-            this.ehliyetTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ehliyetTxt.Margin = new System.Windows.Forms.Padding(2);
             this.ehliyetTxt.Name = "ehliyetTxt";
             this.ehliyetTxt.Size = new System.Drawing.Size(103, 20);
             this.ehliyetTxt.TabIndex = 0;
             // 
             // isyeriadTxt
             // 
-            this.isyeriadTxt.Location = new System.Drawing.Point(358, 84);
-            this.isyeriadTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeriadTxt.Location = new System.Drawing.Point(428, 94);
+            this.isyeriadTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeriadTxt.Name = "isyeriadTxt";
             this.isyeriadTxt.Size = new System.Drawing.Size(103, 20);
             this.isyeriadTxt.TabIndex = 0;
@@ -196,7 +188,7 @@
             // isdeneyimiLbl
             // 
             this.isdeneyimiLbl.AutoSize = true;
-            this.isdeneyimiLbl.Location = new System.Drawing.Point(292, 28);
+            this.isdeneyimiLbl.Location = new System.Drawing.Point(362, 38);
             this.isdeneyimiLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.isdeneyimiLbl.Name = "isdeneyimiLbl";
             this.isdeneyimiLbl.Size = new System.Drawing.Size(61, 13);
@@ -216,7 +208,7 @@
             // isyeriadLbl
             // 
             this.isyeriadLbl.AutoSize = true;
-            this.isyeriadLbl.Location = new System.Drawing.Point(254, 84);
+            this.isyeriadLbl.Location = new System.Drawing.Point(324, 94);
             this.isyeriadLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.isyeriadLbl.Name = "isyeriadLbl";
             this.isyeriadLbl.Size = new System.Drawing.Size(25, 13);
@@ -226,7 +218,7 @@
             // isyeriadresLbl
             // 
             this.isyeriadresLbl.AutoSize = true;
-            this.isyeriadresLbl.Location = new System.Drawing.Point(254, 117);
+            this.isyeriadresLbl.Location = new System.Drawing.Point(324, 127);
             this.isyeriadresLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.isyeriadresLbl.Name = "isyeriadresLbl";
             this.isyeriadresLbl.Size = new System.Drawing.Size(39, 13);
@@ -246,7 +238,7 @@
             // isyeripozisyonLbl
             // 
             this.isyeripozisyonLbl.AutoSize = true;
-            this.isyeripozisyonLbl.Location = new System.Drawing.Point(254, 190);
+            this.isyeripozisyonLbl.Location = new System.Drawing.Point(324, 200);
             this.isyeripozisyonLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.isyeripozisyonLbl.Name = "isyeripozisyonLbl";
             this.isyeripozisyonLbl.Size = new System.Drawing.Size(98, 13);
@@ -256,7 +248,7 @@
             // calismasuresiLbl
             // 
             this.calismasuresiLbl.AutoSize = true;
-            this.calismasuresiLbl.Location = new System.Drawing.Point(254, 220);
+            this.calismasuresiLbl.Location = new System.Drawing.Point(324, 230);
             this.calismasuresiLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.calismasuresiLbl.Name = "calismasuresiLbl";
             this.calismasuresiLbl.Size = new System.Drawing.Size(78, 13);
@@ -265,8 +257,8 @@
             // 
             // isyeriadresTxt
             // 
-            this.isyeriadresTxt.Location = new System.Drawing.Point(358, 117);
-            this.isyeriadresTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeriadresTxt.Location = new System.Drawing.Point(428, 127);
+            this.isyeriadresTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeriadresTxt.Multiline = true;
             this.isyeriadresTxt.Name = "isyeriadresTxt";
             this.isyeriadresTxt.Size = new System.Drawing.Size(103, 53);
@@ -274,16 +266,16 @@
             // 
             // calismasuresiTxt
             // 
-            this.calismasuresiTxt.Location = new System.Drawing.Point(358, 220);
-            this.calismasuresiTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.calismasuresiTxt.Location = new System.Drawing.Point(428, 230);
+            this.calismasuresiTxt.Margin = new System.Windows.Forms.Padding(2);
             this.calismasuresiTxt.Name = "calismasuresiTxt";
             this.calismasuresiTxt.Size = new System.Drawing.Size(103, 20);
             this.calismasuresiTxt.TabIndex = 0;
             // 
             // isyeripozisyonTxt
             // 
-            this.isyeripozisyonTxt.Location = new System.Drawing.Point(358, 190);
-            this.isyeripozisyonTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeripozisyonTxt.Location = new System.Drawing.Point(428, 200);
+            this.isyeripozisyonTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeripozisyonTxt.Name = "isyeripozisyonTxt";
             this.isyeripozisyonTxt.Size = new System.Drawing.Size(103, 20);
             this.isyeripozisyonTxt.TabIndex = 0;
@@ -291,7 +283,7 @@
             // isdeneyimi2lbl
             // 
             this.isdeneyimi2lbl.AutoSize = true;
-            this.isdeneyimi2lbl.Location = new System.Drawing.Point(254, 54);
+            this.isdeneyimi2lbl.Location = new System.Drawing.Point(324, 64);
             this.isdeneyimi2lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.isdeneyimi2lbl.Name = "isdeneyimi2lbl";
             this.isdeneyimi2lbl.Size = new System.Drawing.Size(153, 13);
@@ -301,7 +293,7 @@
             // egitimdurumuLbl
             // 
             this.egitimdurumuLbl.AutoSize = true;
-            this.egitimdurumuLbl.Location = new System.Drawing.Point(569, 28);
+            this.egitimdurumuLbl.Location = new System.Drawing.Point(776, 28);
             this.egitimdurumuLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.egitimdurumuLbl.Name = "egitimdurumuLbl";
             this.egitimdurumuLbl.Size = new System.Drawing.Size(75, 13);
@@ -311,7 +303,7 @@
             // okuladLbl
             // 
             this.okuladLbl.AutoSize = true;
-            this.okuladLbl.Location = new System.Drawing.Point(536, 88);
+            this.okuladLbl.Location = new System.Drawing.Point(743, 88);
             this.okuladLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.okuladLbl.Name = "okuladLbl";
             this.okuladLbl.Size = new System.Drawing.Size(50, 13);
@@ -320,8 +312,8 @@
             // 
             // okuladTxt
             // 
-            this.okuladTxt.Location = new System.Drawing.Point(622, 85);
-            this.okuladTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okuladTxt.Location = new System.Drawing.Point(829, 85);
+            this.okuladTxt.Margin = new System.Windows.Forms.Padding(2);
             this.okuladTxt.Name = "okuladTxt";
             this.okuladTxt.Size = new System.Drawing.Size(103, 20);
             this.okuladTxt.TabIndex = 6;
@@ -329,7 +321,7 @@
             // bolumLbl
             // 
             this.bolumLbl.AutoSize = true;
-            this.bolumLbl.Location = new System.Drawing.Point(536, 115);
+            this.bolumLbl.Location = new System.Drawing.Point(743, 115);
             this.bolumLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bolumLbl.Name = "bolumLbl";
             this.bolumLbl.Size = new System.Drawing.Size(57, 13);
@@ -339,7 +331,7 @@
             // baslangicLbl
             // 
             this.baslangicLbl.AutoSize = true;
-            this.baslangicLbl.Location = new System.Drawing.Point(536, 150);
+            this.baslangicLbl.Location = new System.Drawing.Point(743, 150);
             this.baslangicLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.baslangicLbl.Name = "baslangicLbl";
             this.baslangicLbl.Size = new System.Drawing.Size(82, 13);
@@ -348,8 +340,8 @@
             // 
             // bolumTxt
             // 
-            this.bolumTxt.Location = new System.Drawing.Point(622, 115);
-            this.bolumTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bolumTxt.Location = new System.Drawing.Point(829, 115);
+            this.bolumTxt.Margin = new System.Windows.Forms.Padding(2);
             this.bolumTxt.Name = "bolumTxt";
             this.bolumTxt.Size = new System.Drawing.Size(103, 20);
             this.bolumTxt.TabIndex = 6;
@@ -357,43 +349,27 @@
             // bitisLbl
             // 
             this.bitisLbl.AutoSize = true;
-            this.bitisLbl.Location = new System.Drawing.Point(536, 177);
+            this.bitisLbl.Location = new System.Drawing.Point(743, 177);
             this.bitisLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bitisLbl.Name = "bitisLbl";
             this.bitisLbl.Size = new System.Drawing.Size(58, 13);
             this.bitisLbl.TabIndex = 5;
             this.bitisLbl.Text = "Bitiş Tarihi:";
             // 
-            // baslangicTxt
-            // 
-            this.baslangicTxt.Location = new System.Drawing.Point(622, 148);
-            this.baslangicTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.baslangicTxt.Name = "baslangicTxt";
-            this.baslangicTxt.Size = new System.Drawing.Size(103, 20);
-            this.baslangicTxt.TabIndex = 6;
-            // 
             // notortLbl
             // 
             this.notortLbl.AutoSize = true;
-            this.notortLbl.Location = new System.Drawing.Point(536, 210);
+            this.notortLbl.Location = new System.Drawing.Point(743, 210);
             this.notortLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.notortLbl.Name = "notortLbl";
             this.notortLbl.Size = new System.Drawing.Size(79, 13);
             this.notortLbl.TabIndex = 5;
             this.notortLbl.Text = "Not Ortalaması:";
             // 
-            // bitisTxt
-            // 
-            this.bitisTxt.Location = new System.Drawing.Point(622, 177);
-            this.bitisTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.bitisTxt.Name = "bitisTxt";
-            this.bitisTxt.Size = new System.Drawing.Size(103, 20);
-            this.bitisTxt.TabIndex = 6;
-            // 
             // notortTxt
             // 
-            this.notortTxt.Location = new System.Drawing.Point(622, 207);
-            this.notortTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.notortTxt.Location = new System.Drawing.Point(829, 207);
+            this.notortTxt.Margin = new System.Windows.Forms.Padding(2);
             this.notortTxt.Name = "notortTxt";
             this.notortTxt.Size = new System.Drawing.Size(103, 20);
             this.notortTxt.TabIndex = 6;
@@ -401,7 +377,7 @@
             // egitim2Lbl
             // 
             this.egitim2Lbl.AutoSize = true;
-            this.egitim2Lbl.Location = new System.Drawing.Point(569, 63);
+            this.egitim2Lbl.Location = new System.Drawing.Point(776, 63);
             this.egitim2Lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.egitim2Lbl.Name = "egitim2Lbl";
             this.egitim2Lbl.Size = new System.Drawing.Size(94, 13);
@@ -411,7 +387,7 @@
             // uyeolBtn
             // 
             this.uyeolBtn.Location = new System.Drawing.Point(375, 320);
-            this.uyeolBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeolBtn.Margin = new System.Windows.Forms.Padding(2);
             this.uyeolBtn.Name = "uyeolBtn";
             this.uyeolBtn.Size = new System.Drawing.Size(130, 46);
             this.uyeolBtn.TabIndex = 10;
@@ -419,16 +395,38 @@
             this.uyeolBtn.UseVisualStyleBackColor = true;
             this.uyeolBtn.Click += new System.EventHandler(this.uyeolBtn_Click);
             // 
+            // dogumTarihi
+            // 
+            this.dogumTarihi.Location = new System.Drawing.Point(93, 239);
+            this.dogumTarihi.Name = "dogumTarihi";
+            this.dogumTarihi.Size = new System.Drawing.Size(200, 20);
+            this.dogumTarihi.TabIndex = 11;
+            // 
+            // egitimBaslangicTarihi
+            // 
+            this.egitimBaslangicTarihi.Location = new System.Drawing.Point(829, 144);
+            this.egitimBaslangicTarihi.Name = "egitimBaslangicTarihi";
+            this.egitimBaslangicTarihi.Size = new System.Drawing.Size(200, 20);
+            this.egitimBaslangicTarihi.TabIndex = 12;
+            // 
+            // egitimBitisTarihi
+            // 
+            this.egitimBitisTarihi.Location = new System.Drawing.Point(829, 174);
+            this.egitimBitisTarihi.Name = "egitimBitisTarihi";
+            this.egitimBitisTarihi.Size = new System.Drawing.Size(200, 20);
+            this.egitimBitisTarihi.TabIndex = 13;
+            // 
             // UyeOl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 375);
+            this.ClientSize = new System.Drawing.Size(1037, 373);
+            this.Controls.Add(this.egitimBitisTarihi);
+            this.Controls.Add(this.egitimBaslangicTarihi);
+            this.Controls.Add(this.dogumTarihi);
             this.Controls.Add(this.uyeolBtn);
             this.Controls.Add(this.egitim2Lbl);
             this.Controls.Add(this.notortTxt);
-            this.Controls.Add(this.bitisTxt);
-            this.Controls.Add(this.baslangicTxt);
             this.Controls.Add(this.notortLbl);
             this.Controls.Add(this.bolumTxt);
             this.Controls.Add(this.bitisLbl);
@@ -458,11 +456,10 @@
             this.Controls.Add(this.yabancidilTxt);
             this.Controls.Add(this.uyetelTxt);
             this.Controls.Add(this.ehliyetTxt);
-            this.Controls.Add(this.uyedtTxt);
             this.Controls.Add(this.uyeepostaTxt);
             this.Controls.Add(this.uyeadresTxt);
             this.Controls.Add(this.uyeadTxt);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UyeOl";
             this.Text = "UyeOl";
             this.ResumeLayout(false);
@@ -476,7 +473,6 @@
         private System.Windows.Forms.TextBox uyeadresTxt;
         private System.Windows.Forms.TextBox uyeepostaTxt;
         private System.Windows.Forms.TextBox uyetelTxt;
-        private System.Windows.Forms.TextBox uyedtTxt;
         private System.Windows.Forms.TextBox yabancidilTxt;
         private System.Windows.Forms.TextBox ehliyetTxt;
         private System.Windows.Forms.TextBox isyeriadTxt;
@@ -504,11 +500,12 @@
         private System.Windows.Forms.Label baslangicLbl;
         private System.Windows.Forms.TextBox bolumTxt;
         private System.Windows.Forms.Label bitisLbl;
-        private System.Windows.Forms.TextBox baslangicTxt;
         private System.Windows.Forms.Label notortLbl;
-        private System.Windows.Forms.TextBox bitisTxt;
         private System.Windows.Forms.TextBox notortTxt;
         private System.Windows.Forms.Label egitim2Lbl;
         private System.Windows.Forms.Button uyeolBtn;
+        private System.Windows.Forms.DateTimePicker dogumTarihi;
+        private System.Windows.Forms.DateTimePicker egitimBaslangicTarihi;
+        private System.Windows.Forms.DateTimePicker egitimBitisTarihi;
     }
 }
