@@ -16,5 +16,11 @@ namespace IK_Yonetimi
         {
             InitializeComponent();
         }
+
+        private void uyeolLbl_Click(object sender, EventArgs e)
+        {
+            UyeOl uyeOl = new UyeOl();
+            uyeOl.Show();
+        }
     }
 }
