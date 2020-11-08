@@ -50,6 +50,7 @@
             this.elemanbulanBtn.TabIndex = 1;
             this.elemanbulanBtn.Text = "Eleman Bul";
             this.elemanbulanBtn.UseVisualStyleBackColor = true;
+            this.elemanbulanBtn.Click += new System.EventHandler(this.elemanbulanBtn_Click);
             // 
             // Form1
             // 
