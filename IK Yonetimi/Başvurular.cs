@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace IK_Yonetimi
 {
@@ -23,6 +24,7 @@ namespace IK_Yonetimi
             {
                 //Gelen bilgilerden direkt olarak kökü doldur.
                 Başvurular.kok = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
+                MessageBox.Show(kok.basvuranNo + " - " + kok.ad);
             }
             else
             {
@@ -33,30 +35,39 @@ namespace IK_Yonetimi
 
         public static void PreorderEkle(Basvuran yKok, Basvuran eklenecek)
         {
-            if (!yKok.bosmu)
+            if (yKok != null)
             {
-                if (eklenecek.basvuranNo <= yKok.basvuranNo)
+                if (!yKok.bosmu)
                 {
-                    PreorderEkle(yKok.sol, eklenecek);
+                    if (eklenecek.basvuranNo <= yKok.basvuranNo)
+                    {
+                        PreorderEkle(yKok.sol, eklenecek);
+                    }
+                    else
+                    {
+                        PreorderEkle(yKok.sag, eklenecek);
+                    }
                 }
                 else
                 {
-                    PreorderEkle(yKok.sag, eklenecek);
+                    try
+                    {
+                        if (yKok.sol != null || yKok.sag != null)
+                        {
+                            eklenecek.sol = yKok.sol;
+                            eklenecek.sag = yKok.sag;
+                        }
+                    }
+                    catch (Exception)
+                    { }
+                    yKok = eklenecek;
+                    MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
                 }
             }
             else
             {
-                try
-                {
-                    if (yKok.sol != null || yKok.sag != null)
-                    {
-                        eklenecek.sol = yKok.sol;
-                        eklenecek.sag = yKok.sag;
-                    }
-                }
-                catch (Exception)
-                { }
                 yKok = eklenecek;
+                MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
             }
             
         }
