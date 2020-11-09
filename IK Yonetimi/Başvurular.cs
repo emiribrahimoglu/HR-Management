@@ -202,7 +202,7 @@ namespace IK_Yonetimi
     public class IsDeneyimi
     {
         bool bosmu = true;
-        string isyeriad;
+        public string isyeriad;
         public IsDeneyimiAdres sag;
 
         public IsDeneyimi(string isyeriad, string isyeriadres, string pozisyon, int calismasuresi)
@@ -218,7 +218,7 @@ namespace IK_Yonetimi
 
     public class IsDeneyimiAdres
     {
-        string isyeriadres;
+        public string isyeriadres;
         public IsDeneyimiPozisyon sag;
 
         public IsDeneyimiAdres(string isyeriadres, string pozisyon, int calismasuresi)
@@ -229,7 +229,7 @@ namespace IK_Yonetimi
     }
     public class IsDeneyimiPozisyon
     {
-        string pozisyon;
+        public string pozisyon;
         public IsDeneyimiCalismaSuresi sag;
 
         public IsDeneyimiPozisyon(string pozisyon, int calismasuresi)
@@ -240,7 +240,7 @@ namespace IK_Yonetimi
     }
     public class IsDeneyimiCalismaSuresi
     {
-        int calismasuresi;
+        public int calismasuresi;
 
         public IsDeneyimiCalismaSuresi(int calismasuresi)
         {
@@ -253,7 +253,7 @@ namespace IK_Yonetimi
     public class EgitimDurumu
     {
         bool bosmu = true;
-        string okulAd;
+        public string okulAd;
         public EgitimDurumuBolumu sag;
 
         public EgitimDurumu(string okulAd, string bolum,
@@ -270,7 +270,7 @@ namespace IK_Yonetimi
 
     public class EgitimDurumuBolumu
     {
-        string bolum;
+        public string bolum;
         public EgitimDurumuEgitimSuresi sag;
 
         public EgitimDurumuBolumu(string bolum,
@@ -283,8 +283,8 @@ namespace IK_Yonetimi
 
     public class EgitimDurumuEgitimSuresi
     {
-        DateTime baslangic;
-        DateTime bitis;
+        public DateTime baslangic;
+        public DateTime bitis;
         public EgitimDurumuNotOrt sag;
 
         public EgitimDurumuEgitimSuresi(DateTime baslangic, DateTime bitis, double notort)
@@ -296,7 +296,7 @@ namespace IK_Yonetimi
     }
     public class EgitimDurumuNotOrt
     {
-        double notort;
+        public double notort;
         public EgitimDurumuNotOrt(double notort)
         {
             this.notort = notort;

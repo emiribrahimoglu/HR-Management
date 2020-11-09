@@ -33,8 +33,6 @@
             this.bilgiguncelleBtn = new System.Windows.Forms.Button();
             this.egitim2Lbl = new System.Windows.Forms.Label();
             this.notortTxt = new System.Windows.Forms.TextBox();
-            this.bitisTxt = new System.Windows.Forms.TextBox();
-            this.baslangicTxt = new System.Windows.Forms.TextBox();
             this.notortLbl = new System.Windows.Forms.Label();
             this.bolumTxt = new System.Windows.Forms.TextBox();
             this.bitisLbl = new System.Windows.Forms.Label();
@@ -64,11 +62,13 @@
             this.yabancidilTxt = new System.Windows.Forms.TextBox();
             this.uyetelTxt = new System.Windows.Forms.TextBox();
             this.ehliyetTxt = new System.Windows.Forms.TextBox();
-            this.uyedtTxt = new System.Windows.Forms.TextBox();
             this.uyeepostaTxt = new System.Windows.Forms.TextBox();
             this.uyeadresTxt = new System.Windows.Forms.TextBox();
             this.uyeadTxt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bitisPicker = new System.Windows.Forms.DateTimePicker();
+            this.baslangicPicker = new System.Windows.Forms.DateTimePicker();
+            this.dtPicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,20 +114,6 @@
             this.notortTxt.Name = "notortTxt";
             this.notortTxt.Size = new System.Drawing.Size(136, 22);
             this.notortTxt.TabIndex = 17;
-            // 
-            // bitisTxt
-            // 
-            this.bitisTxt.Location = new System.Drawing.Point(832, 208);
-            this.bitisTxt.Name = "bitisTxt";
-            this.bitisTxt.Size = new System.Drawing.Size(136, 22);
-            this.bitisTxt.TabIndex = 16;
-            // 
-            // baslangicTxt
-            // 
-            this.baslangicTxt.Location = new System.Drawing.Point(832, 172);
-            this.baslangicTxt.Name = "baslangicTxt";
-            this.baslangicTxt.Size = new System.Drawing.Size(136, 22);
-            this.baslangicTxt.TabIndex = 15;
             // 
             // notortLbl
             // 
@@ -373,13 +359,6 @@
             this.ehliyetTxt.Size = new System.Drawing.Size(136, 22);
             this.ehliyetTxt.TabIndex = 8;
             // 
-            // uyedtTxt
-            // 
-            this.uyedtTxt.Location = new System.Drawing.Point(125, 284);
-            this.uyedtTxt.Name = "uyedtTxt";
-            this.uyedtTxt.Size = new System.Drawing.Size(136, 22);
-            this.uyedtTxt.TabIndex = 6;
-            // 
             // uyeepostaTxt
             // 
             this.uyeepostaTxt.Location = new System.Drawing.Point(125, 245);
@@ -404,17 +383,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bitisPicker);
+            this.groupBox1.Controls.Add(this.baslangicPicker);
+            this.groupBox1.Controls.Add(this.dtPicker);
             this.groupBox1.Controls.Add(this.uyeadLbl);
             this.groupBox1.Controls.Add(this.egitim2Lbl);
             this.groupBox1.Controls.Add(this.bilgiguncelleBtn);
             this.groupBox1.Controls.Add(this.notortTxt);
             this.groupBox1.Controls.Add(this.uyeadTxt);
-            this.groupBox1.Controls.Add(this.bitisTxt);
             this.groupBox1.Controls.Add(this.uyeadresTxt);
-            this.groupBox1.Controls.Add(this.baslangicTxt);
             this.groupBox1.Controls.Add(this.uyeepostaTxt);
             this.groupBox1.Controls.Add(this.notortLbl);
-            this.groupBox1.Controls.Add(this.uyedtTxt);
             this.groupBox1.Controls.Add(this.bolumTxt);
             this.groupBox1.Controls.Add(this.ehliyetTxt);
             this.groupBox1.Controls.Add(this.bitisLbl);
@@ -445,15 +424,36 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(265, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(994, 386);
+            this.groupBox1.Size = new System.Drawing.Size(1048, 386);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
+            // 
+            // bitisPicker
+            // 
+            this.bitisPicker.Location = new System.Drawing.Point(832, 213);
+            this.bitisPicker.Name = "bitisPicker";
+            this.bitisPicker.Size = new System.Drawing.Size(200, 22);
+            this.bitisPicker.TabIndex = 49;
+            // 
+            // baslangicPicker
+            // 
+            this.baslangicPicker.Location = new System.Drawing.Point(832, 175);
+            this.baslangicPicker.Name = "baslangicPicker";
+            this.baslangicPicker.Size = new System.Drawing.Size(200, 22);
+            this.baslangicPicker.TabIndex = 48;
+            // 
+            // dtPicker
+            // 
+            this.dtPicker.Location = new System.Drawing.Point(125, 284);
+            this.dtPicker.Name = "dtPicker";
+            this.dtPicker.Size = new System.Drawing.Size(200, 22);
+            this.dtPicker.TabIndex = 47;
             // 
             // Hesabım
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 431);
+            this.ClientSize = new System.Drawing.Size(1325, 431);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bilgisilmeBtn);
             this.Controls.Add(this.bilgigoruntuleBtn);
@@ -473,8 +473,6 @@
         private System.Windows.Forms.Button bilgiguncelleBtn;
         private System.Windows.Forms.Label egitim2Lbl;
         private System.Windows.Forms.TextBox notortTxt;
-        private System.Windows.Forms.TextBox bitisTxt;
-        private System.Windows.Forms.TextBox baslangicTxt;
         private System.Windows.Forms.Label notortLbl;
         private System.Windows.Forms.TextBox bolumTxt;
         private System.Windows.Forms.Label bitisLbl;
@@ -504,10 +502,12 @@
         private System.Windows.Forms.TextBox yabancidilTxt;
         private System.Windows.Forms.TextBox uyetelTxt;
         private System.Windows.Forms.TextBox ehliyetTxt;
-        private System.Windows.Forms.TextBox uyedtTxt;
         private System.Windows.Forms.TextBox uyeepostaTxt;
         private System.Windows.Forms.TextBox uyeadresTxt;
         private System.Windows.Forms.TextBox uyeadTxt;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker bitisPicker;
+        private System.Windows.Forms.DateTimePicker baslangicPicker;
+        private System.Windows.Forms.DateTimePicker dtPicker;
     }
 }
