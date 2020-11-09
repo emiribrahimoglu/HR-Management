@@ -12,6 +12,7 @@ namespace IK_Yonetimi
 {
     public partial class Giris : Form
     {
+        public static bool girisYap = false;
         public Giris()
         {
             InitializeComponent();
@@ -21,6 +22,23 @@ namespace IK_Yonetimi
         {
             UyeOl uyeOl = new UyeOl();
             uyeOl.Show();
+        }
+
+        private void girisBtn_Click(object sender, EventArgs e)
+        {
+            Başvurular.PreorderGiris(adTxt.Text, telTxt.Text);
+            if (girisYap)
+            {
+                MessageBox.Show("Giriş Başarılı!");
+                Hesabım hesabim = new Hesabım();
+                hesabim.Show();
+                girisYap = false;
+            }
+            else
+            {
+                MessageBox.Show("Giriş Başarısız! Girdiğiniz bilgileri lütfen kontrol edin");
+            }
+            
         }
     }
 }

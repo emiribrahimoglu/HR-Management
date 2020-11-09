@@ -11,6 +11,35 @@ namespace IK_Yonetimi
     public class Başvurular
     {
         public static Basvuran kok;
+
+        public static void PreorderGiris(string ad, string tel)
+        {
+            if (kok != null)
+            {
+                if (!kok.bosmu)
+                {
+                    PreorderGiris(kok, ad, tel);
+                }
+                
+            }
+        }
+
+        public static void PreorderGiris(Basvuran dugum, string ad, string tel)
+        {
+            if (dugum != null)
+            {
+                if (!dugum.bosmu)
+                {
+                    if (dugum.ad == ad && dugum.tel.ToString() == tel)
+                    {
+                        Giris.girisYap = true;
+                    }
+                    PreorderGiris(dugum.sol, ad, tel);
+                    PreorderGiris(dugum.sag, ad, tel);
+                }
+            }
+            
+        }
         
         public static void PreorderEkle(int basvuranNo, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
@@ -29,11 +58,11 @@ namespace IK_Yonetimi
             else
             {
                 Basvuran eklenecek = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
-                PreorderEkle(Başvurular.kok, eklenecek);
+                PreorderEkle(kok, eklenecek, kok, false);
             }
         }
 
-        public static void PreorderEkle(Basvuran yKok, Basvuran eklenecek)
+        public static void PreorderEkle(Basvuran yKok, Basvuran eklenecek, Basvuran ebeveyn, bool solsag) //false sol, true sag
         {
             if (yKok != null)
             {
@@ -41,11 +70,12 @@ namespace IK_Yonetimi
                 {
                     if (eklenecek.basvuranNo <= yKok.basvuranNo)
                     {
-                        PreorderEkle(yKok.sol, eklenecek);
+
+                        PreorderEkle(yKok.sol, eklenecek, yKok, false);
                     }
                     else
                     {
-                        PreorderEkle(yKok.sag, eklenecek);
+                        PreorderEkle(yKok.sag, eklenecek, yKok, true);
                     }
                 }
                 else
@@ -57,16 +87,46 @@ namespace IK_Yonetimi
                             eklenecek.sol = yKok.sol;
                             eklenecek.sag = yKok.sag;
                         }
+
                     }
                     catch (Exception)
                     { }
                     yKok = eklenecek;
+                    if (solsag)
+                    {
+                        ebeveyn.sag = eklenecek;
+                    }
+                    else
+                    {
+                        ebeveyn.sol = eklenecek;
+                    }
                     MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
                 }
             }
             else
             {
+                try
+                {
+                    if (yKok != null)
+                    {
+                        if (yKok.sol != null || yKok.sag != null)
+                        {
+                            eklenecek.sol = yKok.sol;
+                            eklenecek.sag = yKok.sag;
+                        }
+                    }
+                }
+                catch (Exception)
+                { }
                 yKok = eklenecek;
+                if (solsag)
+                {
+                    ebeveyn.sag = eklenecek;
+                }
+                else
+                {
+                    ebeveyn.sol = eklenecek;
+                }
                 MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
             }
             

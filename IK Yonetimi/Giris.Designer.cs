@@ -41,7 +41,7 @@
             // adTxt
             // 
             this.adTxt.Location = new System.Drawing.Point(86, 48);
-            this.adTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.adTxt.Margin = new System.Windows.Forms.Padding(2);
             this.adTxt.Name = "adTxt";
             this.adTxt.Size = new System.Drawing.Size(116, 20);
             this.adTxt.TabIndex = 0;
@@ -49,7 +49,7 @@
             // sifreTxt
             // 
             this.sifreTxt.Location = new System.Drawing.Point(86, 112);
-            this.sifreTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sifreTxt.Margin = new System.Windows.Forms.Padding(2);
             this.sifreTxt.Name = "sifreTxt";
             this.sifreTxt.Size = new System.Drawing.Size(116, 20);
             this.sifreTxt.TabIndex = 0;
@@ -77,12 +77,13 @@
             // girisBtn
             // 
             this.girisBtn.Location = new System.Drawing.Point(116, 135);
-            this.girisBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.girisBtn.Margin = new System.Windows.Forms.Padding(2);
             this.girisBtn.Name = "girisBtn";
             this.girisBtn.Size = new System.Drawing.Size(56, 25);
             this.girisBtn.TabIndex = 2;
             this.girisBtn.Text = "Giriş";
             this.girisBtn.UseVisualStyleBackColor = true;
+            this.girisBtn.Click += new System.EventHandler(this.girisBtn_Click);
             // 
             // telefonLbl
             // 
@@ -97,7 +98,7 @@
             // telTxt
             // 
             this.telTxt.Location = new System.Drawing.Point(86, 81);
-            this.telTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.telTxt.Margin = new System.Windows.Forms.Padding(2);
             this.telTxt.Name = "telTxt";
             this.telTxt.Size = new System.Drawing.Size(116, 20);
             this.telTxt.TabIndex = 4;
@@ -128,7 +129,7 @@
             this.Controls.Add(this.adLbl);
             this.Controls.Add(this.sifreTxt);
             this.Controls.Add(this.adTxt);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Giris";
             this.Text = "Giris";
             this.ResumeLayout(false);
