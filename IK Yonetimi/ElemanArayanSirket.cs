@@ -22,7 +22,18 @@ namespace IK_Yonetimi
 
         }
 
+        //uygulamak istediğimiz filtreler listboxta tutuldu. 
+        //buradan alınarak filtreleri uygulama işleminde kullanılacaklar.
         private void filtreekleBtn_Click(object sender, EventArgs e)
+        {
+            secilenfiltrelerListBox.Items.Add(comboBox1.SelectedItem);
+            secilenfiltrelerListBox.Items.Add(mindeneyimTxt.Text);
+            secilenfiltrelerListBox.Items.Add(belirliyasaltiTxt.Text);
+            secilenfiltrelerListBox.Items.Add(ehliyetTxt.Text);
+        }
+
+        
+        private void filtreleriuygulaBtn_Click(object sender, EventArgs e)
         {
 
         }

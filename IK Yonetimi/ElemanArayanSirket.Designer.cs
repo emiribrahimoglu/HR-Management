@@ -35,15 +35,15 @@
             this.mindeneyimTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.belirliyasaltiTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ehliyetTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.secilenfiltrelerListBox = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.filtreekleBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.filtreleriuygulaBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -110,12 +110,12 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "İstenilen Yaşın Altını Seçmek";
             // 
-            // textBox2
+            // belirliyasaltiTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(517, 146);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 10;
+            this.belirliyasaltiTxt.Location = new System.Drawing.Point(517, 146);
+            this.belirliyasaltiTxt.Name = "belirliyasaltiTxt";
+            this.belirliyasaltiTxt.Size = new System.Drawing.Size(100, 22);
+            this.belirliyasaltiTxt.TabIndex = 10;
             // 
             // label3
             // 
@@ -126,12 +126,12 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Ehliyet Tipi Giriniz";
             // 
-            // textBox3
+            // ehliyetTxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(517, 174);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 12;
+            this.ehliyetTxt.Location = new System.Drawing.Point(517, 174);
+            this.ehliyetTxt.Name = "ehliyetTxt";
+            this.ehliyetTxt.Size = new System.Drawing.Size(100, 22);
+            this.ehliyetTxt.TabIndex = 12;
             // 
             // label4
             // 
@@ -151,14 +151,14 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Filtre Seçiniz";
             // 
-            // listBox2
+            // secilenfiltrelerListBox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(634, 60);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(129, 164);
-            this.listBox2.TabIndex = 15;
+            this.secilenfiltrelerListBox.FormattingEnabled = true;
+            this.secilenfiltrelerListBox.ItemHeight = 16;
+            this.secilenfiltrelerListBox.Location = new System.Drawing.Point(634, 60);
+            this.secilenfiltrelerListBox.Name = "secilenfiltrelerListBox";
+            this.secilenfiltrelerListBox.Size = new System.Drawing.Size(129, 164);
+            this.secilenfiltrelerListBox.TabIndex = 15;
             // 
             // label6
             // 
@@ -179,29 +179,30 @@
             this.filtreekleBtn.UseVisualStyleBackColor = true;
             this.filtreekleBtn.Click += new System.EventHandler(this.filtreekleBtn_Click);
             // 
-            // button1
+            // filtreleriuygulaBtn
             // 
-            this.button1.Location = new System.Drawing.Point(634, 230);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 30);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Filtreleri Uygula";
-            this.button1.UseVisualStyleBackColor = true;
+            this.filtreleriuygulaBtn.Location = new System.Drawing.Point(634, 230);
+            this.filtreleriuygulaBtn.Name = "filtreleriuygulaBtn";
+            this.filtreleriuygulaBtn.Size = new System.Drawing.Size(129, 30);
+            this.filtreleriuygulaBtn.TabIndex = 18;
+            this.filtreleriuygulaBtn.Text = "Filtreleri Uygula";
+            this.filtreleriuygulaBtn.UseVisualStyleBackColor = true;
+            this.filtreleriuygulaBtn.Click += new System.EventHandler(this.filtreleriuygulaBtn_Click);
             // 
             // ElemanArayanSirket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 440);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.filtreleriuygulaBtn);
             this.Controls.Add(this.filtreekleBtn);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.secilenfiltrelerListBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.ehliyetTxt);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.belirliyasaltiTxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mindeneyimTxt);
@@ -225,14 +226,14 @@
         private System.Windows.Forms.TextBox mindeneyimTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox belirliyasaltiTxt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox ehliyetTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox secilenfiltrelerListBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button filtreekleBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button filtreleriuygulaBtn;
     }
 }
