@@ -12,6 +12,30 @@ namespace IK_Yonetimi
     {
         public static Basvuran kok;
 
+        public static void PreorderBilgiCek(Basvuran dugum, string ad)
+        {
+            if (dugum != null)
+            {
+                if (!dugum.bosmu)
+                {
+                    if (dugum.ad == ad)
+                    {
+                        BasvuranBilgileri.ad = dugum.ad;
+                        BasvuranBilgileri.adres = dugum.adres;
+                        BasvuranBilgileri.tel = dugum.tel;
+                        BasvuranBilgileri.mail = dugum.mail;
+                        BasvuranBilgileri.dt = dugum.dt;
+                        BasvuranBilgileri.ydil = dugum.ehliyet;
+                        BasvuranBilgileri.ehliyet = dugum.ehliyet;
+                        BasvuranBilgileri.isDeneyimi = dugum.isDeneyimi;
+                        BasvuranBilgileri.egitimDurumu = dugum.egitimDurumu;
+                    }
+                    PreorderBilgiCek(dugum.sol, ad);
+                    PreorderBilgiCek(dugum.sag, ad);
+                }
+            }
+        }
+
         public static void PreorderGiris(string ad, string tel)
         {
             if (kok != null)
@@ -279,9 +303,15 @@ namespace IK_Yonetimi
         }
     }
 
-    public class EklenecekBasvuran
+    public class BasvuranAdlari
     {
-        
+        public string ad;
+        public BasvuranAdlari sag;
+
+        public BasvuranAdlari(string ad)
+        {
+            this.ad = ad;
+        }
     }
 
 }

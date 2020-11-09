@@ -30,6 +30,7 @@ namespace IK_Yonetimi
             if (girisYap)
             {
                 MessageBox.Show("Giriş Başarılı!");
+                Başvurular.PreorderBilgiCek(Başvurular.kok, adTxt.Text);
                 Hesabım hesabim = new Hesabım();
                 hesabim.Show();
                 girisYap = false;
