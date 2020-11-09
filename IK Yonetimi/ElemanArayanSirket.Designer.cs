@@ -60,14 +60,14 @@
             this.textBox1.Location = new System.Drawing.Point(12, 32);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(157, 22);
-            this.textBox1.TabIndex = 3;
+            this.textBox1.TabIndex = 0;
             // 
             // adagorearaBtn
             // 
             this.adagorearaBtn.Location = new System.Drawing.Point(175, 31);
             this.adagorearaBtn.Name = "adagorearaBtn";
             this.adagorearaBtn.Size = new System.Drawing.Size(75, 23);
-            this.adagorearaBtn.TabIndex = 4;
+            this.adagorearaBtn.TabIndex = 1;
             this.adagorearaBtn.Text = "Ara";
             this.adagorearaBtn.UseVisualStyleBackColor = true;
             // 
@@ -82,7 +82,7 @@
             this.comboBox1.Location = new System.Drawing.Point(327, 60);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(181, 24);
-            this.comboBox1.TabIndex = 6;
+            this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // mindeneyimTxt
@@ -90,7 +90,7 @@
             this.mindeneyimTxt.Location = new System.Drawing.Point(517, 118);
             this.mindeneyimTxt.Name = "mindeneyimTxt";
             this.mindeneyimTxt.Size = new System.Drawing.Size(100, 22);
-            this.mindeneyimTxt.TabIndex = 7;
+            this.mindeneyimTxt.TabIndex = 4;
             // 
             // label1
             // 
@@ -115,7 +115,7 @@
             this.belirliyasaltiTxt.Location = new System.Drawing.Point(517, 146);
             this.belirliyasaltiTxt.Name = "belirliyasaltiTxt";
             this.belirliyasaltiTxt.Size = new System.Drawing.Size(100, 22);
-            this.belirliyasaltiTxt.TabIndex = 10;
+            this.belirliyasaltiTxt.TabIndex = 5;
             // 
             // label3
             // 
@@ -131,7 +131,7 @@
             this.ehliyetTxt.Location = new System.Drawing.Point(517, 174);
             this.ehliyetTxt.Name = "ehliyetTxt";
             this.ehliyetTxt.Size = new System.Drawing.Size(100, 22);
-            this.ehliyetTxt.TabIndex = 12;
+            this.ehliyetTxt.TabIndex = 6;
             // 
             // label4
             // 
@@ -174,7 +174,7 @@
             this.filtreekleBtn.Location = new System.Drawing.Point(380, 230);
             this.filtreekleBtn.Name = "filtreekleBtn";
             this.filtreekleBtn.Size = new System.Drawing.Size(131, 29);
-            this.filtreekleBtn.TabIndex = 17;
+            this.filtreekleBtn.TabIndex = 7;
             this.filtreekleBtn.Text = "Filtre Ekle";
             this.filtreekleBtn.UseVisualStyleBackColor = true;
             this.filtreekleBtn.Click += new System.EventHandler(this.filtreekleBtn_Click);
@@ -184,7 +184,7 @@
             this.filtreleriuygulaBtn.Location = new System.Drawing.Point(634, 230);
             this.filtreleriuygulaBtn.Name = "filtreleriuygulaBtn";
             this.filtreleriuygulaBtn.Size = new System.Drawing.Size(129, 30);
-            this.filtreleriuygulaBtn.TabIndex = 18;
+            this.filtreleriuygulaBtn.TabIndex = 9;
             this.filtreleriuygulaBtn.Text = "Filtreleri Uygula";
             this.filtreleriuygulaBtn.UseVisualStyleBackColor = true;
             this.filtreleriuygulaBtn.Click += new System.EventHandler(this.filtreleriuygulaBtn_Click);

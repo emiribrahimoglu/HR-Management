@@ -95,7 +95,7 @@
             this.bilgiguncelleBtn.Location = new System.Drawing.Point(547, 317);
             this.bilgiguncelleBtn.Name = "bilgiguncelleBtn";
             this.bilgiguncelleBtn.Size = new System.Drawing.Size(118, 60);
-            this.bilgiguncelleBtn.TabIndex = 2;
+            this.bilgiguncelleBtn.TabIndex = 18;
             this.bilgiguncelleBtn.Text = "Bilgilerimi Güncelle";
             this.bilgiguncelleBtn.UseVisualStyleBackColor = true;
             // 
@@ -113,21 +113,21 @@
             this.notortTxt.Location = new System.Drawing.Point(832, 245);
             this.notortTxt.Name = "notortTxt";
             this.notortTxt.Size = new System.Drawing.Size(136, 22);
-            this.notortTxt.TabIndex = 44;
+            this.notortTxt.TabIndex = 17;
             // 
             // bitisTxt
             // 
             this.bitisTxt.Location = new System.Drawing.Point(832, 208);
             this.bitisTxt.Name = "bitisTxt";
             this.bitisTxt.Size = new System.Drawing.Size(136, 22);
-            this.bitisTxt.TabIndex = 43;
+            this.bitisTxt.TabIndex = 16;
             // 
             // baslangicTxt
             // 
             this.baslangicTxt.Location = new System.Drawing.Point(832, 172);
             this.baslangicTxt.Name = "baslangicTxt";
             this.baslangicTxt.Size = new System.Drawing.Size(136, 22);
-            this.baslangicTxt.TabIndex = 42;
+            this.baslangicTxt.TabIndex = 15;
             // 
             // notortLbl
             // 
@@ -143,7 +143,7 @@
             this.bolumTxt.Location = new System.Drawing.Point(832, 132);
             this.bolumTxt.Name = "bolumTxt";
             this.bolumTxt.Size = new System.Drawing.Size(136, 22);
-            this.bolumTxt.TabIndex = 41;
+            this.bolumTxt.TabIndex = 14;
             // 
             // bitisLbl
             // 
@@ -159,7 +159,7 @@
             this.okuladTxt.Location = new System.Drawing.Point(832, 95);
             this.okuladTxt.Name = "okuladTxt";
             this.okuladTxt.Size = new System.Drawing.Size(136, 22);
-            this.okuladTxt.TabIndex = 45;
+            this.okuladTxt.TabIndex = 13;
             // 
             // baslangicLbl
             // 
@@ -334,7 +334,7 @@
             this.isyeriadresTxt.Multiline = true;
             this.isyeriadresTxt.Name = "isyeriadresTxt";
             this.isyeriadresTxt.Size = new System.Drawing.Size(136, 64);
-            this.isyeriadresTxt.TabIndex = 15;
+            this.isyeriadresTxt.TabIndex = 10;
             // 
             // uyeadLbl
             // 
@@ -350,42 +350,42 @@
             this.isyeriadTxt.Location = new System.Drawing.Point(479, 94);
             this.isyeriadTxt.Name = "isyeriadTxt";
             this.isyeriadTxt.Size = new System.Drawing.Size(136, 22);
-            this.isyeriadTxt.TabIndex = 13;
+            this.isyeriadTxt.TabIndex = 9;
             // 
             // yabancidilTxt
             // 
             this.yabancidilTxt.Location = new System.Drawing.Point(125, 317);
             this.yabancidilTxt.Name = "yabancidilTxt";
             this.yabancidilTxt.Size = new System.Drawing.Size(136, 22);
-            this.yabancidilTxt.TabIndex = 14;
+            this.yabancidilTxt.TabIndex = 7;
             // 
             // uyetelTxt
             // 
             this.uyetelTxt.Location = new System.Drawing.Point(125, 208);
             this.uyetelTxt.Name = "uyetelTxt";
             this.uyetelTxt.Size = new System.Drawing.Size(136, 22);
-            this.uyetelTxt.TabIndex = 19;
+            this.uyetelTxt.TabIndex = 4;
             // 
             // ehliyetTxt
             // 
             this.ehliyetTxt.Location = new System.Drawing.Point(125, 345);
             this.ehliyetTxt.Name = "ehliyetTxt";
             this.ehliyetTxt.Size = new System.Drawing.Size(136, 22);
-            this.ehliyetTxt.TabIndex = 16;
+            this.ehliyetTxt.TabIndex = 8;
             // 
             // uyedtTxt
             // 
             this.uyedtTxt.Location = new System.Drawing.Point(125, 284);
             this.uyedtTxt.Name = "uyedtTxt";
             this.uyedtTxt.Size = new System.Drawing.Size(136, 22);
-            this.uyedtTxt.TabIndex = 17;
+            this.uyedtTxt.TabIndex = 6;
             // 
             // uyeepostaTxt
             // 
             this.uyeepostaTxt.Location = new System.Drawing.Point(125, 245);
             this.uyeepostaTxt.Name = "uyeepostaTxt";
             this.uyeepostaTxt.Size = new System.Drawing.Size(136, 22);
-            this.uyeepostaTxt.TabIndex = 18;
+            this.uyeepostaTxt.TabIndex = 5;
             // 
             // uyeadresTxt
             // 
@@ -393,14 +393,14 @@
             this.uyeadresTxt.Multiline = true;
             this.uyeadresTxt.Name = "uyeadresTxt";
             this.uyeadresTxt.Size = new System.Drawing.Size(136, 64);
-            this.uyeadresTxt.TabIndex = 20;
+            this.uyeadresTxt.TabIndex = 3;
             // 
             // uyeadTxt
             // 
             this.uyeadTxt.Location = new System.Drawing.Point(125, 69);
             this.uyeadTxt.Name = "uyeadTxt";
             this.uyeadTxt.Size = new System.Drawing.Size(100, 22);
-            this.uyeadTxt.TabIndex = 10;
+            this.uyeadTxt.TabIndex = 2;
             // 
             // groupBox1
             // 
