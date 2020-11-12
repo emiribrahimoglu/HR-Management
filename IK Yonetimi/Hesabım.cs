@@ -13,6 +13,7 @@ namespace IK_Yonetimi
     public partial class Hesabım : Form
     {
         int basvuranNo;
+        bool bilgiguncellendiMi = false; // Bütün nesnelerin changed olayında bunu false yapacağız!!!
         public Hesabım()
         {
             InitializeComponent();
@@ -44,6 +45,26 @@ namespace IK_Yonetimi
             Başvurular.PreorderGuncelle(basvuranNo, uyeadTxt.Text, uyeadresTxt.Text, Convert.ToDouble(uyetelTxt.Text), uyeepostaTxt.Text, dtPicker.Value,
                 yabancidilTxt.Text, ehliyetTxt.Text, isyeriadTxt.Text, isyeriadresTxt.Text, isyeripozisyonTxt.Text, Convert.ToInt32(calismasuresiTxt.Text), okuladTxt.Text,
                 bolumTxt.Text, baslangicPicker.Value, bitisPicker.Value, Convert.ToDouble(notortTxt.Text));
+            bilgiguncellendiMi = true;
+        }
+
+        private void bilgisilmeBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bilgilerinizi silmek istediğinize emin misiniz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                if (bilgiguncellendiMi)
+                {
+                    Başvurular.PreorderBilgileriSil(basvuranNo, uyeadTxt.Text);
+                    this.Close();
+                }
+                else
+                {
+                    Başvurular.PreorderBilgileriSil(basvuranNo, BasvuranBilgileri.ad);
+                    this.Close();
+                }
+                
+            }
         }
     }
 

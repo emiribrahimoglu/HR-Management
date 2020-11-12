@@ -75,7 +75,7 @@
             // bilgigoruntuleBtn
             // 
             this.bilgigoruntuleBtn.Location = new System.Drawing.Point(9, 19);
-            this.bilgigoruntuleBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bilgigoruntuleBtn.Margin = new System.Windows.Forms.Padding(2);
             this.bilgigoruntuleBtn.Name = "bilgigoruntuleBtn";
             this.bilgigoruntuleBtn.Size = new System.Drawing.Size(185, 99);
             this.bilgigoruntuleBtn.TabIndex = 0;
@@ -85,17 +85,18 @@
             // bilgisilmeBtn
             // 
             this.bilgisilmeBtn.Location = new System.Drawing.Point(9, 123);
-            this.bilgisilmeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bilgisilmeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.bilgisilmeBtn.Name = "bilgisilmeBtn";
             this.bilgisilmeBtn.Size = new System.Drawing.Size(185, 99);
             this.bilgisilmeBtn.TabIndex = 1;
             this.bilgisilmeBtn.Text = "Bilgilerimi Sil";
             this.bilgisilmeBtn.UseVisualStyleBackColor = true;
+            this.bilgisilmeBtn.Click += new System.EventHandler(this.bilgisilmeBtn_Click);
             // 
             // bilgiguncelleBtn
             // 
             this.bilgiguncelleBtn.Location = new System.Drawing.Point(410, 258);
-            this.bilgiguncelleBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bilgiguncelleBtn.Margin = new System.Windows.Forms.Padding(2);
             this.bilgiguncelleBtn.Name = "bilgiguncelleBtn";
             this.bilgiguncelleBtn.Size = new System.Drawing.Size(88, 49);
             this.bilgiguncelleBtn.TabIndex = 18;
@@ -116,7 +117,7 @@
             // notortTxt
             // 
             this.notortTxt.Location = new System.Drawing.Point(624, 199);
-            this.notortTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.notortTxt.Margin = new System.Windows.Forms.Padding(2);
             this.notortTxt.Name = "notortTxt";
             this.notortTxt.Size = new System.Drawing.Size(103, 20);
             this.notortTxt.TabIndex = 17;
@@ -134,7 +135,7 @@
             // bolumTxt
             // 
             this.bolumTxt.Location = new System.Drawing.Point(624, 107);
-            this.bolumTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bolumTxt.Margin = new System.Windows.Forms.Padding(2);
             this.bolumTxt.Name = "bolumTxt";
             this.bolumTxt.Size = new System.Drawing.Size(103, 20);
             this.bolumTxt.TabIndex = 14;
@@ -152,7 +153,7 @@
             // okuladTxt
             // 
             this.okuladTxt.Location = new System.Drawing.Point(624, 77);
-            this.okuladTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okuladTxt.Margin = new System.Windows.Forms.Padding(2);
             this.okuladTxt.Name = "okuladTxt";
             this.okuladTxt.Size = new System.Drawing.Size(103, 20);
             this.okuladTxt.TabIndex = 13;
@@ -330,7 +331,7 @@
             // isyeripozisyonTxt
             // 
             this.isyeripozisyonTxt.Location = new System.Drawing.Point(359, 182);
-            this.isyeripozisyonTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeripozisyonTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeripozisyonTxt.Name = "isyeripozisyonTxt";
             this.isyeripozisyonTxt.Size = new System.Drawing.Size(103, 20);
             this.isyeripozisyonTxt.TabIndex = 11;
@@ -338,7 +339,7 @@
             // calismasuresiTxt
             // 
             this.calismasuresiTxt.Location = new System.Drawing.Point(359, 212);
-            this.calismasuresiTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.calismasuresiTxt.Margin = new System.Windows.Forms.Padding(2);
             this.calismasuresiTxt.Name = "calismasuresiTxt";
             this.calismasuresiTxt.Size = new System.Drawing.Size(103, 20);
             this.calismasuresiTxt.TabIndex = 12;
@@ -346,7 +347,7 @@
             // isyeriadresTxt
             // 
             this.isyeriadresTxt.Location = new System.Drawing.Point(359, 109);
-            this.isyeriadresTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeriadresTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeriadresTxt.Multiline = true;
             this.isyeriadresTxt.Name = "isyeriadresTxt";
             this.isyeriadresTxt.Size = new System.Drawing.Size(103, 53);
@@ -365,7 +366,7 @@
             // isyeriadTxt
             // 
             this.isyeriadTxt.Location = new System.Drawing.Point(359, 76);
-            this.isyeriadTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeriadTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeriadTxt.Name = "isyeriadTxt";
             this.isyeriadTxt.Size = new System.Drawing.Size(103, 20);
             this.isyeriadTxt.TabIndex = 9;
@@ -373,7 +374,7 @@
             // yabancidilTxt
             // 
             this.yabancidilTxt.Location = new System.Drawing.Point(94, 258);
-            this.yabancidilTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.yabancidilTxt.Margin = new System.Windows.Forms.Padding(2);
             this.yabancidilTxt.Name = "yabancidilTxt";
             this.yabancidilTxt.Size = new System.Drawing.Size(103, 20);
             this.yabancidilTxt.TabIndex = 7;
@@ -381,7 +382,7 @@
             // uyetelTxt
             // 
             this.uyetelTxt.Location = new System.Drawing.Point(94, 169);
-            this.uyetelTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyetelTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyetelTxt.Name = "uyetelTxt";
             this.uyetelTxt.Size = new System.Drawing.Size(103, 20);
             this.uyetelTxt.TabIndex = 4;
@@ -389,7 +390,7 @@
             // ehliyetTxt
             // 
             this.ehliyetTxt.Location = new System.Drawing.Point(94, 280);
-            this.ehliyetTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ehliyetTxt.Margin = new System.Windows.Forms.Padding(2);
             this.ehliyetTxt.Name = "ehliyetTxt";
             this.ehliyetTxt.Size = new System.Drawing.Size(103, 20);
             this.ehliyetTxt.TabIndex = 8;
@@ -397,7 +398,7 @@
             // uyeepostaTxt
             // 
             this.uyeepostaTxt.Location = new System.Drawing.Point(94, 199);
-            this.uyeepostaTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeepostaTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeepostaTxt.Name = "uyeepostaTxt";
             this.uyeepostaTxt.Size = new System.Drawing.Size(103, 20);
             this.uyeepostaTxt.TabIndex = 5;
@@ -405,7 +406,7 @@
             // uyeadresTxt
             // 
             this.uyeadresTxt.Location = new System.Drawing.Point(94, 86);
-            this.uyeadresTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeadresTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeadresTxt.Multiline = true;
             this.uyeadresTxt.Name = "uyeadresTxt";
             this.uyeadresTxt.Size = new System.Drawing.Size(103, 53);
@@ -414,7 +415,7 @@
             // uyeadTxt
             // 
             this.uyeadTxt.Location = new System.Drawing.Point(94, 56);
-            this.uyeadTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeadTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeadTxt.Name = "uyeadTxt";
             this.uyeadTxt.Size = new System.Drawing.Size(76, 20);
             this.uyeadTxt.TabIndex = 2;
@@ -461,9 +462,9 @@
             this.groupBox1.Controls.Add(this.isyeriadLbl);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(199, 11);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(786, 314);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
@@ -471,7 +472,7 @@
             // bitisPicker
             // 
             this.bitisPicker.Location = new System.Drawing.Point(624, 173);
-            this.bitisPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bitisPicker.Margin = new System.Windows.Forms.Padding(2);
             this.bitisPicker.Name = "bitisPicker";
             this.bitisPicker.Size = new System.Drawing.Size(151, 20);
             this.bitisPicker.TabIndex = 49;
@@ -479,7 +480,7 @@
             // baslangicPicker
             // 
             this.baslangicPicker.Location = new System.Drawing.Point(624, 142);
-            this.baslangicPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.baslangicPicker.Margin = new System.Windows.Forms.Padding(2);
             this.baslangicPicker.Name = "baslangicPicker";
             this.baslangicPicker.Size = new System.Drawing.Size(151, 20);
             this.baslangicPicker.TabIndex = 48;
@@ -487,7 +488,7 @@
             // dtPicker
             // 
             this.dtPicker.Location = new System.Drawing.Point(94, 231);
-            this.dtPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtPicker.Margin = new System.Windows.Forms.Padding(2);
             this.dtPicker.Name = "dtPicker";
             this.dtPicker.Size = new System.Drawing.Size(151, 20);
             this.dtPicker.TabIndex = 47;
@@ -500,7 +501,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bilgisilmeBtn);
             this.Controls.Add(this.bilgigoruntuleBtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Hesabım";
             this.Text = "Hesabım";
             this.Load += new System.EventHandler(this.Hesabım_Load);

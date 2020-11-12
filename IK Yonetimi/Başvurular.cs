@@ -37,6 +37,42 @@ namespace IK_Yonetimi
             }
         }
 
+        public static void PreorderBilgileriSil(int basvuranno, string ad)
+        {
+            PreorderBilgileriSil(kok, basvuranno, ad);
+        }
+
+        public static void PreorderBilgileriSil(Basvuran dugum, int basvuranno, string ad)
+        {
+            if (dugum != null)
+            {
+                if (!dugum.bosmu)
+                {
+                    if (dugum.ad == ad && dugum.basvuranNo == basvuranno)
+                    {
+                        dugum.bosmu = true;
+                        dugum.ad = "";
+                        dugum.adres = "";
+                        dugum.tel = 0;
+                        dugum.mail = "";
+                        dugum.dt = DateTime.MinValue;
+                        dugum.isDeneyimi.isyeriad = "";
+                        dugum.isDeneyimi.sag.isyeriadres = "";
+                        dugum.isDeneyimi.sag.sag.pozisyon = "";
+                        dugum.isDeneyimi.sag.sag.sag.calismasuresi = 0;
+                        dugum.egitimDurumu.okulAd = "";
+                        dugum.egitimDurumu.sag.bolum = "";
+                        dugum.egitimDurumu.sag.sag.baslangic = DateTime.MinValue;
+                        dugum.egitimDurumu.sag.sag.bitis = DateTime.MinValue;
+                        dugum.egitimDurumu.sag.sag.sag.notort = 0;
+                    }
+                    PreorderBilgileriSil(dugum.sol, basvuranno, ad);
+                    PreorderBilgileriSil(dugum.sag, basvuranno, ad);
+                }
+            }
+
+        }
+
         public static void PreorderGuncelle(int basvuranno, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
             string pozisyon, int calismasuresi, string okulAd, string bolum,
@@ -161,7 +197,18 @@ namespace IK_Yonetimi
                     }
                     catch (Exception)
                     { }
-                    yKok = eklenecek;
+                    eklenecek.basvuranNo = yKok.basvuranNo; //Boşaltılmış düğümde hali hazırda basvuranno bulunduğu için onun değişmediğinden emin oluyoruz
+                    yKok.ad = eklenecek.ad;
+                    yKok.adres = eklenecek.adres;
+                    yKok.tel = eklenecek.tel;
+                    yKok.mail = eklenecek.mail;
+                    yKok.dt = eklenecek.dt;
+                    yKok.ydil = eklenecek.ydil;
+                    yKok.ehliyet = eklenecek.ehliyet;
+                    yKok.isDeneyimi = eklenecek.isDeneyimi;
+                    yKok.egitimDurumu = eklenecek.egitimDurumu;
+                    yKok.bosmu = false;
+                    /*yKok = eklenecek;
                     if (solsag)
                     {
                         ebeveyn.sag = eklenecek;
@@ -169,7 +216,7 @@ namespace IK_Yonetimi
                     else
                     {
                         ebeveyn.sol = eklenecek;
-                    }
+                    }*/
                     MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
                 }
             }
