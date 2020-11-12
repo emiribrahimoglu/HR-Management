@@ -12,6 +12,7 @@ namespace IK_Yonetimi
 {
     public partial class Hesabım : Form
     {
+        int basvuranNo;
         public Hesabım()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace IK_Yonetimi
 
         private void Hesabım_Load(object sender, EventArgs e)
         {
+            basvuranNo = BasvuranBilgileri.basvuranNo;
             uyeadTxt.Text = BasvuranBilgileri.ad;
             uyeadresTxt.Text = BasvuranBilgileri.adres;
             uyetelTxt.Text = Convert.ToString(BasvuranBilgileri.tel);
@@ -35,9 +37,13 @@ namespace IK_Yonetimi
             baslangicPicker.Value = BasvuranBilgileri.egitimDurumu.sag.sag.baslangic;
             bitisPicker.Value = BasvuranBilgileri.egitimDurumu.sag.sag.bitis;
             notortTxt.Text = BasvuranBilgileri.egitimDurumu.sag.sag.sag.notort.ToString();
+        }
 
-            
-
+        private void bilgiguncelleBtn_Click(object sender, EventArgs e)
+        {
+            Başvurular.PreorderGuncelle(basvuranNo, uyeadTxt.Text, uyeadresTxt.Text, Convert.ToDouble(uyetelTxt.Text), uyeepostaTxt.Text, dtPicker.Value,
+                yabancidilTxt.Text, ehliyetTxt.Text, isyeriadTxt.Text, isyeriadresTxt.Text, isyeripozisyonTxt.Text, Convert.ToInt32(calismasuresiTxt.Text), okuladTxt.Text,
+                bolumTxt.Text, baslangicPicker.Value, bitisPicker.Value, Convert.ToDouble(notortTxt.Text));
         }
     }
 

@@ -20,18 +20,64 @@ namespace IK_Yonetimi
                 {
                     if (dugum.ad == ad)
                     {
+                        BasvuranBilgileri.basvuranNo = dugum.basvuranNo;
                         BasvuranBilgileri.ad = dugum.ad;
                         BasvuranBilgileri.adres = dugum.adres;
                         BasvuranBilgileri.tel = dugum.tel;
                         BasvuranBilgileri.mail = dugum.mail;
                         BasvuranBilgileri.dt = dugum.dt;
-                        BasvuranBilgileri.ydil = dugum.ehliyet;
+                        BasvuranBilgileri.ydil = dugum.ydil;
                         BasvuranBilgileri.ehliyet = dugum.ehliyet;
                         BasvuranBilgileri.isDeneyimi = dugum.isDeneyimi;
                         BasvuranBilgileri.egitimDurumu = dugum.egitimDurumu;
                     }
                     PreorderBilgiCek(dugum.sol, ad);
                     PreorderBilgiCek(dugum.sag, ad);
+                }
+            }
+        }
+
+        public static void PreorderGuncelle(int basvuranno, string ad, string adres, double tel, string mail,
+            DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
+            string pozisyon, int calismasuresi, string okulAd, string bolum,
+            DateTime baslangic, DateTime bitis, double notort)
+        {
+            PreorderGuncelle(kok, basvuranno, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum,
+            baslangic, bitis, notort);
+        }
+
+        public static void PreorderGuncelle(Basvuran dugum, int basvuranno, string ad, string adres, double tel, string mail,
+            DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
+            string pozisyon, int calismasuresi, string okulAd, string bolum,
+            DateTime baslangic, DateTime bitis, double notort)
+        {
+            if (dugum != null)
+            {
+                if (!dugum.bosmu)
+                {
+                    if (dugum.ad == ad && dugum.basvuranNo == basvuranno)
+                    {
+                        dugum.ad = BasvuranBilgileri.ad;
+                        dugum.adres = adres;
+                        dugum.tel = tel;
+                        dugum.mail = mail;
+                        dugum.dt = dt;
+                        dugum.ydil = ydil;
+                        dugum.ehliyet = ehliyet;
+                        dugum.isDeneyimi.isyeriad = isyeriad;
+                        dugum.isDeneyimi.sag.isyeriadres = isyeriadres;
+                        dugum.isDeneyimi.sag.sag.pozisyon = pozisyon;
+                        dugum.isDeneyimi.sag.sag.sag.calismasuresi = calismasuresi;
+                        dugum.egitimDurumu.okulAd = okulAd;
+                        dugum.egitimDurumu.sag.bolum = bolum;
+                        dugum.egitimDurumu.sag.sag.baslangic = baslangic;
+                        dugum.egitimDurumu.sag.sag.bitis = bitis;
+                        dugum.egitimDurumu.sag.sag.sag.notort = notort;
+                    }
+                    PreorderGuncelle(dugum.sol, basvuranno, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, 
+                        baslangic, bitis, notort);
+                    PreorderGuncelle(dugum.sag, basvuranno, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum,
+                        baslangic, bitis, notort);
                 }
             }
         }
