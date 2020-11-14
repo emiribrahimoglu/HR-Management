@@ -84,6 +84,7 @@
             this.yabancidilLbl = new System.Windows.Forms.Label();
             this.isyeriadLbl = new System.Windows.Forms.Label();
             this.bilgigoruntuleBtn = new System.Windows.Forms.Button();
+            this.herkesiListeleBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,10 +111,11 @@
             this.adagorearaBtn.Location = new System.Drawing.Point(131, 25);
             this.adagorearaBtn.Margin = new System.Windows.Forms.Padding(2);
             this.adagorearaBtn.Name = "adagorearaBtn";
-            this.adagorearaBtn.Size = new System.Drawing.Size(56, 19);
+            this.adagorearaBtn.Size = new System.Drawing.Size(37, 21);
             this.adagorearaBtn.TabIndex = 1;
             this.adagorearaBtn.Text = "Ara";
             this.adagorearaBtn.UseVisualStyleBackColor = true;
+            this.adagorearaBtn.Click += new System.EventHandler(this.adagorearaBtn_Click);
             // 
             // comboBox1
             // 
@@ -674,11 +676,23 @@
             this.bilgigoruntuleBtn.UseVisualStyleBackColor = true;
             this.bilgigoruntuleBtn.Click += new System.EventHandler(this.bilgigoruntuleBtn_Click);
             // 
+            // herkesiListeleBtn
+            // 
+            this.herkesiListeleBtn.Location = new System.Drawing.Point(9, 356);
+            this.herkesiListeleBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.herkesiListeleBtn.Name = "herkesiListeleBtn";
+            this.herkesiListeleBtn.Size = new System.Drawing.Size(56, 36);
+            this.herkesiListeleBtn.TabIndex = 50;
+            this.herkesiListeleBtn.Text = "Herkesi Listele";
+            this.herkesiListeleBtn.UseVisualStyleBackColor = true;
+            this.herkesiListeleBtn.Click += new System.EventHandler(this.herkesiListeleBtn_Click);
+            // 
             // ElemanArayanSirket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1406, 657);
+            this.Controls.Add(this.herkesiListeleBtn);
             this.Controls.Add(this.bilgigoruntuleBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.filtreleriuygulaBtn);
@@ -766,5 +780,6 @@
         private System.Windows.Forms.Label yabancidilLbl;
         private System.Windows.Forms.Label isyeriadLbl;
         private System.Windows.Forms.Button bilgigoruntuleBtn;
+        private System.Windows.Forms.Button herkesiListeleBtn;
     }
 }
