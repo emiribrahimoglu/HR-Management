@@ -69,6 +69,7 @@
             this.bitisPicker = new System.Windows.Forms.DateTimePicker();
             this.baslangicPicker = new System.Windows.Forms.DateTimePicker();
             this.dtPicker = new System.Windows.Forms.DateTimePicker();
+            this.enAzLisans = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -422,6 +423,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.enAzLisans);
             this.groupBox1.Controls.Add(this.bitisPicker);
             this.groupBox1.Controls.Add(this.baslangicPicker);
             this.groupBox1.Controls.Add(this.dtPicker);
@@ -493,6 +495,16 @@
             this.dtPicker.Size = new System.Drawing.Size(151, 20);
             this.dtPicker.TabIndex = 47;
             // 
+            // enAzLisans
+            // 
+            this.enAzLisans.AutoSize = true;
+            this.enAzLisans.Location = new System.Drawing.Point(624, 230);
+            this.enAzLisans.Name = "enAzLisans";
+            this.enAzLisans.Size = new System.Drawing.Size(134, 17);
+            this.enAzLisans.TabIndex = 48;
+            this.enAzLisans.Text = "En Az Lisans Mezunu?";
+            this.enAzLisans.UseVisualStyleBackColor = true;
+            // 
             // Hesabım
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -554,5 +566,6 @@
         private System.Windows.Forms.DateTimePicker bitisPicker;
         private System.Windows.Forms.DateTimePicker baslangicPicker;
         private System.Windows.Forms.DateTimePicker dtPicker;
+        private System.Windows.Forms.CheckBox enAzLisans;
     }
 }

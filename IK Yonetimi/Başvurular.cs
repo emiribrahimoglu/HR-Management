@@ -11,6 +11,7 @@ namespace IK_Yonetimi
     public class Başvurular
     {
         public static Basvuran kok;
+        public static TumBasvuranlar tumBasvuranlar;
 
         public static void PreorderBilgiCek(Basvuran dugum, string ad)
         {
@@ -159,6 +160,7 @@ namespace IK_Yonetimi
             {
                 //Gelen bilgilerden direkt olarak kökü doldur.
                 Başvurular.kok = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
+                tumBasvuranlar = new TumBasvuranlar();
                 MessageBox.Show(kok.basvuranNo + " - " + kok.ad);
             }
             else
