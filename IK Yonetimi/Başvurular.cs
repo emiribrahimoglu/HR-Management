@@ -62,6 +62,7 @@ namespace IK_Yonetimi
                         dugum.isDeneyimi.sag.sag.pozisyon = "";
                         dugum.isDeneyimi.sag.sag.sag.calismasuresi = 0;
                         dugum.egitimDurumu.okulAd = "";
+                        dugum.egitimDurumu.enAzLisans = false;
                         dugum.egitimDurumu.sag.bolum = "";
                         dugum.egitimDurumu.sag.sag.baslangic = DateTime.MinValue;
                         dugum.egitimDurumu.sag.sag.bitis = DateTime.MinValue;
@@ -77,16 +78,16 @@ namespace IK_Yonetimi
         public static void PreorderGuncelle(int basvuranno, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
             string pozisyon, int calismasuresi, string okulAd, string bolum,
-            DateTime baslangic, DateTime bitis, double notort)
+            DateTime baslangic, DateTime bitis, double notort, bool enAzLisans)
         {
             PreorderGuncelle(kok, basvuranno, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum,
-            baslangic, bitis, notort);
+            baslangic, bitis, notort, enAzLisans);
         }
 
         public static void PreorderGuncelle(Basvuran dugum, int basvuranno, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
             string pozisyon, int calismasuresi, string okulAd, string bolum,
-            DateTime baslangic, DateTime bitis, double notort)
+            DateTime baslangic, DateTime bitis, double notort, bool enAzLisans)
         {
             if (dugum != null)
             {
@@ -106,15 +107,16 @@ namespace IK_Yonetimi
                         dugum.isDeneyimi.sag.sag.pozisyon = pozisyon;
                         dugum.isDeneyimi.sag.sag.sag.calismasuresi = calismasuresi;
                         dugum.egitimDurumu.okulAd = okulAd;
+                        dugum.egitimDurumu.enAzLisans = enAzLisans;
                         dugum.egitimDurumu.sag.bolum = bolum;
                         dugum.egitimDurumu.sag.sag.baslangic = baslangic;
                         dugum.egitimDurumu.sag.sag.bitis = bitis;
                         dugum.egitimDurumu.sag.sag.sag.notort = notort;
                     }
                     PreorderGuncelle(dugum.sol, basvuranno, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, 
-                        baslangic, bitis, notort);
+                        baslangic, bitis, notort, enAzLisans);
                     PreorderGuncelle(dugum.sag, basvuranno, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum,
-                        baslangic, bitis, notort);
+                        baslangic, bitis, notort, enAzLisans);
                 }
             }
         }
@@ -151,7 +153,7 @@ namespace IK_Yonetimi
         public static void PreorderEkle(int basvuranNo, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
             string pozisyon, int calismasuresi, string okulAd, string bolum,
-            DateTime baslangic, DateTime bitis, double notort)
+            DateTime baslangic, DateTime bitis, double notort, bool enAzLisans)
         {
             /*En tepedeki kök boşsa direkt başvuran bilgisini ekle. Kök doluysa yeni başvurana belirlenen başvuranNo kökten büyük-küçük ise ona göre gezin, boş bulunan düğüme
              yerleştir.
@@ -159,13 +161,13 @@ namespace IK_Yonetimi
             if (Başvurular.kok == null)
             {
                 //Gelen bilgilerden direkt olarak kökü doldur.
-                Başvurular.kok = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
+                Başvurular.kok = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort, enAzLisans);
                 tumBasvuranlar = new TumBasvuranlar();
                 MessageBox.Show(kok.basvuranNo + " - " + kok.ad);
             }
             else
             {
-                Basvuran eklenecek = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort);
+                Basvuran eklenecek = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort, enAzLisans);
                 PreorderEkle(kok, eklenecek, kok, false);
             }
         }
@@ -272,7 +274,7 @@ namespace IK_Yonetimi
         public Basvuran(int basvuranNo, string ad, string adres, double tel, string mail, 
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres, 
             string pozisyon, int calismasuresi, string okulAd, string bolum, 
-            DateTime baslangic, DateTime bitis, double notort)
+            DateTime baslangic, DateTime bitis, double notort, bool enAzLisans)
         {
             if (bosmu)
             {
@@ -286,7 +288,7 @@ namespace IK_Yonetimi
                 this.ydil = ydil;
                 this.ehliyet = ehliyet;
                 this.isDeneyimi = new IsDeneyimi(isyeriad, isyeriadres, pozisyon, calismasuresi);
-                this.egitimDurumu = new EgitimDurumu(okulAd,bolum,baslangic,bitis,notort);
+                this.egitimDurumu = new EgitimDurumu(okulAd,bolum,baslangic,bitis,notort, enAzLisans);
                 this.bosmu = false;
             }
         }
@@ -348,15 +350,17 @@ namespace IK_Yonetimi
     public class EgitimDurumu
     {
         bool bosmu = true;
+        public bool enAzLisans;
         public string okulAd;
         public EgitimDurumuBolumu sag;
 
         public EgitimDurumu(string okulAd, string bolum,
-            DateTime baslangic, DateTime bitis, double notort)
+            DateTime baslangic, DateTime bitis, double notort, bool enAzLisans)
         {
             if (bosmu)
             {
                 this.okulAd = okulAd;
+                this.enAzLisans = enAzLisans;
                 sag = new EgitimDurumuBolumu(bolum, baslangic, bitis, notort);
                 this.bosmu = false;
             }

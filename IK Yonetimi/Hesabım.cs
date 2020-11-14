@@ -34,6 +34,7 @@ namespace IK_Yonetimi
             isyeripozisyonTxt.Text = BasvuranBilgileri.isDeneyimi.sag.sag.pozisyon;
             calismasuresiTxt.Text = BasvuranBilgileri.isDeneyimi.sag.sag.sag.calismasuresi.ToString();
             okuladTxt.Text = BasvuranBilgileri.egitimDurumu.okulAd;
+            enAzLisans.Checked = BasvuranBilgileri.egitimDurumu.enAzLisans;
             bolumTxt.Text = BasvuranBilgileri.egitimDurumu.sag.bolum;
             baslangicPicker.Value = BasvuranBilgileri.egitimDurumu.sag.sag.baslangic;
             bitisPicker.Value = BasvuranBilgileri.egitimDurumu.sag.sag.bitis;
@@ -44,7 +45,7 @@ namespace IK_Yonetimi
         {
             Başvurular.PreorderGuncelle(basvuranNo, uyeadTxt.Text, uyeadresTxt.Text, Convert.ToDouble(uyetelTxt.Text), uyeepostaTxt.Text, dtPicker.Value,
                 yabancidilTxt.Text, ehliyetTxt.Text, isyeriadTxt.Text, isyeriadresTxt.Text, isyeripozisyonTxt.Text, Convert.ToInt32(calismasuresiTxt.Text), okuladTxt.Text,
-                bolumTxt.Text, baslangicPicker.Value, bitisPicker.Value, Convert.ToDouble(notortTxt.Text));
+                bolumTxt.Text, baslangicPicker.Value, bitisPicker.Value, Convert.ToDouble(notortTxt.Text), enAzLisans.Checked);
             bilgiguncellendiMi = true;
         }
 
