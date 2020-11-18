@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.adagorearaBtn = new System.Windows.Forms.Button();
@@ -85,6 +86,7 @@
             this.isyeriadLbl = new System.Windows.Forms.Label();
             this.bilgigoruntuleBtn = new System.Windows.Forms.Button();
             this.herkesiListeleBtn = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,6 +187,7 @@
             this.ehliyetTxt.Name = "ehliyetTxt";
             this.ehliyetTxt.Size = new System.Drawing.Size(76, 20);
             this.ehliyetTxt.TabIndex = 6;
+            this.ehliyetTxt.MouseHover += new System.EventHandler(this.ehliyetTxt_MouseHover);
             // 
             // label4
             // 
@@ -214,6 +217,7 @@
             this.secilenfiltrelerListBox.Name = "secilenfiltrelerListBox";
             this.secilenfiltrelerListBox.Size = new System.Drawing.Size(98, 134);
             this.secilenfiltrelerListBox.TabIndex = 15;
+            this.secilenfiltrelerListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.secilenfiltrelerListBox_MouseDown);
             // 
             // label6
             // 
@@ -687,6 +691,10 @@
             this.herkesiListeleBtn.UseVisualStyleBackColor = true;
             this.herkesiListeleBtn.Click += new System.EventHandler(this.herkesiListeleBtn_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // ElemanArayanSirket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -781,5 +789,6 @@
         private System.Windows.Forms.Label isyeriadLbl;
         private System.Windows.Forms.Button bilgigoruntuleBtn;
         private System.Windows.Forms.Button herkesiListeleBtn;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
