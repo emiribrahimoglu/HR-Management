@@ -20,7 +20,7 @@ namespace IK_Yonetimi
         private void uyeolBtn_Click(object sender, EventArgs e)
         {
             Random rd = new Random();
-            int basvuranNo = rd.Next(10000,99999);
+            int basvuranNo = rd.Next(10000,99999); // Belirlenen aralıkta rastgele bir başvuranNo değeri tutuluyor. Ağaçta sağ-sol için belirleyici faktör.
             Başvurular.PreorderEkle(basvuranNo, uyeadTxt.Text, uyeadresTxt.Text, Convert.ToDouble(uyetelTxt.Text), uyeepostaTxt.Text, dogumTarihi.Value,
                 yabancidilTxt.Text, ehliyetTxt.Text, isyeriadTxt.Text, isyeriadresTxt.Text, isyeripozisyonTxt.Text, Convert.ToInt32(calismasuresiTxt.Text), okuladTxt.Text,
                 bolumTxt.Text, egitimBaslangicTarihi.Value, egitimBitisTarihi.Value, Convert.ToDouble(notortTxt.Text), enAzLisans.Checked);

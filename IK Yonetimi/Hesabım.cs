@@ -19,7 +19,7 @@ namespace IK_Yonetimi
             InitializeComponent();
         }
 
-        private void Hesabım_Load(object sender, EventArgs e)
+        private void Hesabım_Load(object sender, EventArgs e) // Form üzerindeki ilgili yerler kullanıcının bilgisiyle dolduruluyor.
         {
             basvuranNo = BasvuranBilgileri.basvuranNo;
             uyeadTxt.Text = BasvuranBilgileri.ad;
@@ -52,7 +52,7 @@ namespace IK_Yonetimi
         private void bilgisilmeBtn_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Bilgilerinizi silmek istediğinize emin misiniz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dr == DialogResult.Yes)
+            if (dr == DialogResult.Yes) // Başvuran kişi bilgilerini silmek istediğinden eminse bilgiler silinir.
             {
                 if (bilgiguncellendiMi)
                 {
@@ -69,7 +69,7 @@ namespace IK_Yonetimi
         }
     }
 
-    public class BasvuranBilgileri
+    public class BasvuranBilgileri // Başvuran kişinin bilgilerinin tutulduğu sınıf
     {
         public static int basvuranNo;
         public static string ad;

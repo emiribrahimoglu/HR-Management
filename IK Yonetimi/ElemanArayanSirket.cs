@@ -12,8 +12,6 @@ namespace IK_Yonetimi
 {
     public partial class ElemanArayanSirket : Form
     {
-        private TumBasvuranlar filtrelenenBasvuranlar;
-        private FiltreUygulanmislar tumBasvuranlar;
         private FiltreUygulanmislar filtreUygulanmislar1;
         private FiltreUygulanmislar filtreUygulanmislar2;
         private FiltreUygulanmislar filtreUygulanmislar3;
@@ -27,11 +25,13 @@ namespace IK_Yonetimi
             InitializeComponent();
         }
         /*
-         * Her filtrede if-else if yapılarıyla üstteki nesnelerin null durumuna bakarak filtre uygulanmışların tekrar filtreye tabii tutulması sağlanacak.
-         * Bunun için ilk uygulanacak filtrede tüm başvuranların adının bulunduğu bağlı listedeki isimlere filtre uygulanacak sonraki filtrelerde bir önceki
-         * filtrenin kullandığı bağlı listedeki isimler üzerinde filtreleme işlemi uygulanacak. Son kullanılan filtreleme işleminde son bağlı listeye son
-         * isimler girilecek. Sonrasında o isimler listbox'da gösterilecek.
+         * Her filtrede if-else if yapılarıyla üstteki nesnelerin null durumuna bakarak filtre uygulanmışların tekrar filtreye tabii tutulması sağlanıyor.
+         * Bunun için ilk uygulanan filtrede tüm başvuranların adının bulunduğu bağlı listedeki isimlere filtre uygulandı sonraki filtrelerde bir önceki
+         * filtrenin kullandığı bağlı listedeki isimler üzerinde filtreleme işlemi uygulanıyor. Son kullanılan filtreleme işleminde son bağlı listeye son
+         * isimler giriliyor. Sonrasında o isimler listbox'da gösteriliyor.
          * */
+
+        // Aşağıda ilk sıradaki uygulanacak filtre olduğundan ilkten başka yerde uygulanması imkansız olduğundan bunun diğer varyasyonu yok.
         private void EnAzLisansFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmislar) //gelen filtreuygulanmislar1
         {
             if (tumBasvuranlar != null)
@@ -40,19 +40,20 @@ namespace IK_Yonetimi
                 {
                     if (tumBasvuranlar.egitimDurumu.enAzLisans == true)
                     {
-                        //listBox1.Items.Add(tumBasvuranlar.ad);
                         filtreUygulanmislar.ad = tumBasvuranlar.ad;
-                        filtreUygulanmislar.sag = new FiltreUygulanmislar();
+                        filtreUygulanmislar.sag = new FiltreUygulanmislar(); // null hatası almamak için yapılan atama. Null iken ad'ı eşitleyemiyoruz.
                         EnAzLisansFiltre(tumBasvuranlar.sag, filtreUygulanmislar.sag);
                     }
                     else
                     {
+                        // Filtrelenenlerin eklendiği bu yapıya ekleme yapılmadan sonraki başvurana geçileceğinden sağ tarafa geçmiyoruz.
                         EnAzLisansFiltre(tumBasvuranlar.sag, filtreUygulanmislar);
                     }
                 }
             }
         }
 
+        // İlk uygulanan filtreyse kendisi, bu fonksiyon çalışıyor. Üsttekinin bir kopyası diyebiliriz.
         private void IngilizceBilenlerFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmislar) // gelen filtreuygulanmislar1
         {
             if (tumBasvuranlar != null)
@@ -73,6 +74,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre değilse kendisinden önceki filtre sonuçlarındaki isimler arasında filtre yapılacağı için bu fonksiyon çalışıyor.
         private void IngilizceBilenlerFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar, FiltreUygulanmislar OncekiFiltreUygulanmislar)
         {
             if (tumBasvuranlar != null)
@@ -82,14 +84,14 @@ namespace IK_Yonetimi
                     if (tumBasvuranlar.ad == OncekiFiltreUygulanmislar.ad && tumBasvuranlar.ydil.ToLower().Contains("en"))
                     {
                         OncekiFiltreUygulanmislar.ad = tumBasvuranlar.ad;
-                        filtreUygulanmamislar.sag = new FiltreUygulanmislar();
+                        filtreUygulanmamislar.sag = new FiltreUygulanmislar(); //null değişken üzerinde eşitleme ataması yapamazsın hatasını önlemek için.
                         IngilizceBilenlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar.sag, OncekiFiltreUygulanmislar.sag);
                     }
-                    else if (tumBasvuranlar.ad != OncekiFiltreUygulanmislar.ad)
+                    else if (tumBasvuranlar.ad != OncekiFiltreUygulanmislar.ad) // filtre koşulunu sağlamadığı için değil de isim farkından ise...
                     {
-                        IngilizceBilenlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar);
+                        IngilizceBilenlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar); // başvuranlarda gezinmeye devam, diğerlerinde gezinme yok.
                     }
-                    else
+                    else // filtre koşulunu sağlamadı adlar aynı, o halde önceki filtre sonucu ve tüm başvuranlarda gezinme devam, diğerinde değil.
                     {
                         IngilizceBilenlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar.sag);
                     }
@@ -97,13 +99,14 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre ise çalışan fonksiyon.
         private void BirdenFazlaDilBilenler(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmislar) //gelen filtreuygulanmislar1
         {
             if (tumBasvuranlar != null)
             {
                 if (tumBasvuranlar.ad != null)
                 {
-                    if (tumBasvuranlar.ydil.Length > 2)
+                    if (tumBasvuranlar.ydil.Length > 3)
                     {
                         filtreUygulanmislar.ad = tumBasvuranlar.ad;
                         filtreUygulanmislar.sag = new FiltreUygulanmislar();
@@ -117,23 +120,24 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanacak filtre değilse çalışacak fonksiyon.
         private void BirdenFazlaDilBilenler(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar, FiltreUygulanmislar OncekiFiltreUygulanmislar)
         {
             if (tumBasvuranlar != null)
             {
                 if (tumBasvuranlar.ad != null)
                 {
-                    if (tumBasvuranlar.ad == OncekiFiltreUygulanmislar.ad && tumBasvuranlar.ydil.Length > 2)
+                    if (tumBasvuranlar.ad == OncekiFiltreUygulanmislar.ad && tumBasvuranlar.ydil.Length > 3)
                     {
                         filtreUygulanmamislar.ad = tumBasvuranlar.ad;
                         filtreUygulanmamislar.sag = new FiltreUygulanmislar();
                         BirdenFazlaDilBilenler(tumBasvuranlar.sag, filtreUygulanmamislar.sag, OncekiFiltreUygulanmislar.sag);
                     }
-                    else if (tumBasvuranlar.ad != OncekiFiltreUygulanmislar.ad)
+                    else if (tumBasvuranlar.ad != OncekiFiltreUygulanmislar.ad) // adlar farklıysa adlar aynı olana kadar gezin
                     {
                         BirdenFazlaDilBilenler(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar);
                     }
-                    else
+                    else // Gezinildi, adlar aynı ama koşul sağlanmadı o zaman hem önceki filtre sonuçları hem de tüm başvuranlarda sonraki şahısa devam.
                     {
                         BirdenFazlaDilBilenler(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar.sag);
                     }
@@ -141,6 +145,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre ise çalışan fonksiyon.
         private void DeneyimsizlerFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar) //gelen filtreuygulanmislar1
         {
             if (tumBasvuranlar != null)
@@ -161,6 +166,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre değilse çalışan fonksiyon.
         private void DeneyimsizlerFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar, FiltreUygulanmislar OncekiFiltreUygulanmislar) //gelen filtreuygulanmislar1
         {
             if (tumBasvuranlar != null)
@@ -173,11 +179,11 @@ namespace IK_Yonetimi
                         filtreUygulanmamislar.sag = new FiltreUygulanmislar();
                         DeneyimsizlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar.sag, OncekiFiltreUygulanmislar.sag);
                     }
-                    else if(tumBasvuranlar.ad != OncekiFiltreUygulanmislar.ad)
+                    else if(tumBasvuranlar.ad != OncekiFiltreUygulanmislar.ad) // adlar farklıysa aynı olana kadar gezin
                     {
                         DeneyimsizlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar);
                     }
-                    else
+                    else // Gezinildi, adlar aynı ama koşul sağlanmadı o zaman hem önceki filtre sonuçları hem de tüm başvuranlarda sonraki şahısa devam.
                     {
                         DeneyimsizlerFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, OncekiFiltreUygulanmislar.sag);
                     }
@@ -185,6 +191,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre ise çalışan fonksiyon.
         private void IsDeneyimiFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar) //gelen filtreuygulanmislar1
         {
             if (tumBasvuranlar != null)
@@ -205,6 +212,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre değilse çalışan fonksiyon.
         private void IsDeneyimiFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar, FiltreUygulanmislar oncekiFiltreUygulanmislar)
         {
             if (tumBasvuranlar != null)
@@ -217,11 +225,11 @@ namespace IK_Yonetimi
                         filtreUygulanmamislar.sag = new FiltreUygulanmislar();
                         IsDeneyimiFiltre(tumBasvuranlar.sag, filtreUygulanmamislar.sag, oncekiFiltreUygulanmislar.sag);
                     }
-                    else if (tumBasvuranlar.ad != oncekiFiltreUygulanmislar.ad)
+                    else if (tumBasvuranlar.ad != oncekiFiltreUygulanmislar.ad) // adlar farklıysa gezintiye devam
                     {
                         IsDeneyimiFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, oncekiFiltreUygulanmislar);
                     }
-                    else
+                    else // Gezinti sonrası aynı ad ama koşul sağlanmıyorsa sonraki başvuranlarla kontrol yapılıyor
                     {
                         IsDeneyimiFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, oncekiFiltreUygulanmislar.sag);
                     }
@@ -229,6 +237,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre ise çalışan fonksiyon.
         private void BelirliYasAltiFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar)
         {
             if (tumBasvuranlar != null)
@@ -249,6 +258,7 @@ namespace IK_Yonetimi
             }
         }
 
+        // Kendisi ilk uygulanan filtre değilse çalışan fonksiyon.
         private void BelirliYasAltiFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar, FiltreUygulanmislar oncekiFiltreUygulanmislar)
         {
             if (tumBasvuranlar != null)
@@ -261,11 +271,11 @@ namespace IK_Yonetimi
                         filtreUygulanmamislar.sag = new FiltreUygulanmislar();
                         BelirliYasAltiFiltre(tumBasvuranlar.sag, filtreUygulanmamislar.sag, oncekiFiltreUygulanmislar.sag);
                     }
-                    else if (tumBasvuranlar.ad != oncekiFiltreUygulanmislar.ad)
+                    else if (tumBasvuranlar.ad != oncekiFiltreUygulanmislar.ad) // Adlar aynı değil, tüm başvuranlarda gezintiye devam
                     {
                         BelirliYasAltiFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, oncekiFiltreUygulanmislar);
                     }
-                    else
+                    else // Adlar aynı koşul sağlanmadı, o zaman sıradaki başvuranlara geçiliyor.
                     {
                         BelirliYasAltiFiltre(tumBasvuranlar.sag, filtreUygulanmamislar, oncekiFiltreUygulanmislar.sag);
                     }
@@ -273,7 +283,7 @@ namespace IK_Yonetimi
             }
         }
 
-        private void EhliyetTipiFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar)
+        /*private void EhliyetTipiFiltre(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar)
         {
             if (tumBasvuranlar != null)
             {
@@ -318,15 +328,16 @@ namespace IK_Yonetimi
 
                 }
             }
-        }
+        }*/
 
+        // Şu an sadece Ehliyet filtresinin yapıldığı fonksiyon.
         private void FiltrelemeIslemi(TumBasvuranlar tumBasvuranlar, int filtreNum)
         {
             if (tumBasvuranlar != null)
             {
                 if (tumBasvuranlar.ad != null)
                 {
-                    if (filtreNum == 1 && tumBasvuranlar.egitimDurumu.enAzLisans == true)
+                    /*if (filtreNum == 1 && tumBasvuranlar.egitimDurumu.enAzLisans == true)
                     {
                         listBox1.Items.Add(tumBasvuranlar.ad);
                     }
@@ -349,102 +360,29 @@ namespace IK_Yonetimi
                     else if (filtreNum == 6 && DateTime.Now.Year - tumBasvuranlar.dt.Year < Convert.ToInt32(belirliyasaltiTxt.Text))
                     {
                         listBox1.Items.Add(tumBasvuranlar.ad);
-                    }
-                    else if (filtreNum == 7)
+                    }*/
+                    if (filtreNum == 7)
                     {
                         if (tumBasvuranlar.ehliyet == ehliyetTxt.Text)
                         {
                             listBox1.Items.Add(tumBasvuranlar.ad);
                         }
-                        /*else if (tumBasvuranlar.ehliyet == "A1")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "A2")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "A")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "B1")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "B")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "BE")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "C1")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "C1E")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "C")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "CE")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "D1")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "D1E")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "D")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "DE")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "F")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }
-                        else if (tumBasvuranlar.ehliyet == "G")
-                        {
-                            listBox1.Items.Add(tumBasvuranlar.ad);
-                        }*/
                     }
                     FiltrelemeIslemi(tumBasvuranlar.sag, filtreNum);
                 }
             }
         }
 
+        // Bütün null kontrollerinin nedeni kendisinden önce yapılan filtreleme var mı diye bakıp onun sonuçları üzerine tekrar filtreleme yapılıyor olması
         private void Filtrele()
         {
             if (secilenfiltrelerListBox.Items.Contains("En az lisans mezunu olanlar"))
             {
-                //listBox1.Items.Clear();
-                //FiltrelemeIslemi(Başvurular.tumBasvuranlar, 1);
-                //listBox1.Items.Add("--- En Az Lisans Mezunu Olanlar ---");
                 filtreUygulanmislar1 = new FiltreUygulanmislar();
                 EnAzLisansFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- En Az Lisans Mezunu Olanlar ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
             }
             if (secilenfiltrelerListBox.Items.Contains("İngilizce bilenler"))
             {
-                //listBox1.Items.Clear();
-                //FiltrelemeIslemi(Başvurular.tumBasvuranlar, 2);
-                //listBox1.Items.Add("--- İngilizce Bilenler ---");
                 if (filtreUygulanmislar1 != null)
                 {
                     filtreUygulanmislar2 = new FiltreUygulanmislar();
@@ -455,16 +393,9 @@ namespace IK_Yonetimi
                     filtreUygulanmislar1 = new FiltreUygulanmislar();
                     IngilizceBilenlerFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
                 }
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- İngilizce Bilenler ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
             }
             if (secilenfiltrelerListBox.Items.Contains("Birden fazla yabancı dil bilenler"))
             {
-                //listBox1.Items.Clear();
-                //FiltrelemeIslemi(Başvurular.tumBasvuranlar, 3);
-                //listBox1.Items.Add("--- Birden Fazla Yabancı Dil Bilenler ---");
                 if (filtreUygulanmislar2 != null)
                 {
                     filtreUygulanmislar3 = new FiltreUygulanmislar();
@@ -480,16 +411,9 @@ namespace IK_Yonetimi
                     filtreUygulanmislar1 = new FiltreUygulanmislar();
                     BirdenFazlaDilBilenler(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
                 }
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- Birden Fazla Yabancı Dil Bilenler ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
             }
             if (secilenfiltrelerListBox.Items.Contains("Deneyimsizler"))
             {
-                //listBox1.Items.Clear();
-                //FiltrelemeIslemi(Başvurular.tumBasvuranlar, 4);
-                //listBox1.Items.Add("--- Deneyimsizler ---");
                 if (filtreUygulanmislar3 != null)
                 {
                     filtreUygulanmislar4 = new FiltreUygulanmislar();
@@ -510,16 +434,9 @@ namespace IK_Yonetimi
                     filtreUygulanmislar1 = new FiltreUygulanmislar();
                     DeneyimsizlerFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
                 }
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- Deneyimsizler ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
             }
             if (mindeneyimTxt.Text != "")
             {
-                //listBox1.Items.Clear();
-                //FiltrelemeIslemi(Başvurular.tumBasvuranlar, 5);
-                //listBox1.Items.Add("--- Minimum İş Deneyimi " + mindeneyimTxt.Text + " Yıl ---");
                 if (filtreUygulanmislar4 != null)
                 {
                     filtreUygulanmislar5 = new FiltreUygulanmislar();
@@ -545,16 +462,9 @@ namespace IK_Yonetimi
                     filtreUygulanmislar1 = new FiltreUygulanmislar();
                     IsDeneyimiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
                 }
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- Minimum İş Deneyimi " + mindeneyimTxt.Text + " Yıl ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
             }
             if (belirliyasaltiTxt.Text != "")
             {
-                //listBox1.Items.Clear();
-                //FiltrelemeIslemi(Başvurular.tumBasvuranlar, 6);
-                //listBox1.Items.Add("--- " + belirliyasaltiTxt.Text + " Yaşından Küçük Olanlar ---");
                 if (filtreUygulanmislar5 != null)
                 {
                     filtreUygulanmislar6 = new FiltreUygulanmislar();
@@ -585,63 +495,19 @@ namespace IK_Yonetimi
                     filtreUygulanmislar1 = new FiltreUygulanmislar();
                     BelirliYasAltiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
                 }
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- " + belirliyasaltiTxt.Text + " Yaşından Küçük Olanlar ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
             }
             if (ehliyetTxt.Text != "")
             {
                 listBox1.Items.Clear();
-                FiltrelemeIslemi(Başvurular.tumBasvuranlar, 7);
-                goto Filtresonubypass;
-                //listBox1.Items.Add("--- Ehliyet Tipi " + ehliyetTxt.Text + " Olanlar ---");
-                /*if (filtreUygulanmislar6 != null)
-                {
-                    filtreUygulanmislar7 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar7, filtreUygulanmislar6);
-                }
-                else if (filtreUygulanmislar5 != null)
-                {
-                    filtreUygulanmislar7 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar7, filtreUygulanmislar5);
-                }
-                else if (filtreUygulanmislar4 != null)
-                {
-                    filtreUygulanmislar7 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar7, filtreUygulanmislar4);
-                }
-                else if (filtreUygulanmislar3 != null)
-                {
-                    filtreUygulanmislar7 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar7, filtreUygulanmislar3);
-                }
-                else if (filtreUygulanmislar2 != null)
-                {
-                    filtreUygulanmislar7 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar7, filtreUygulanmislar2);
-                }
-                else if (filtreUygulanmislar1 != null)
-                {
-                    filtreUygulanmislar7 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar7, filtreUygulanmislar1);
-                }
-                else
-                {
-                    filtreUygulanmislar1 = new FiltreUygulanmislar();
-                    EhliyetTipiFiltre(Başvurular.tumBasvuranlar, filtreUygulanmislar1);
-                }
-                HangiFiltrelenmisDegiskeni();
-                /*for (int i = 0; i < listBox1.Items.IndexOf("--- Ehliyet Tipi " + ehliyetTxt.Text + " Olanlar ---"); i++)
-                {
-                    listBox1.Items.RemoveAt(i);
-                }*/
+                FiltrelemeIslemi(Başvurular.tumBasvuranlar, 7); //Üstteki fonksiyonda ehliyet filtresinin numarası 7
+                goto Filtresonubypass; // Ehliyet filtresi sadece tek yapılabiliyor, önceki filtreleme sonuçlarını kontrol etmeye gerek yok.
             }
             HangiFiltrelenmisDegiskeni();
             Filtresonubypass:;
 
         }
 
+        // Buraya gelen filtre sonuçlarının depolandığı sınıf yapısındaki isimler listeye yazılıyor.
         private void FiltrelemeSonucGoster(FiltreUygulanmislar filtreUygulanmislar)
         {
             if (filtreUygulanmislar != null)
@@ -655,6 +521,7 @@ namespace IK_Yonetimi
             
         }
 
+        // En son yapılan filtre hangisiyse, oradaki isimler istenilen sonuçlar olacağı için ona göre kontrol ediliyor.
         private void HangiFiltrelenmisDegiskeni()
         {
             listBox1.Items.Clear();
@@ -686,6 +553,7 @@ namespace IK_Yonetimi
             {
                 FiltrelemeSonucGoster(filtreUygulanmislar1);
             }
+            // Bellekte çok yer kaplamalarına gerek kalmadı, filtre işlemleri sonuçlandı. Null'a çevriliyor ki diğer filtrelemelere hazır olsun.
             filtreUygulanmislar1 = null;
             filtreUygulanmislar2 = null;
             filtreUygulanmislar3 = null;
@@ -695,20 +563,20 @@ namespace IK_Yonetimi
             filtreUygulanmislar7 = null;
         }
 
-        private void BasvuranlariListele(TumBasvuranlar tumBasvuranlar, FiltreUygulanmislar filtreUygulanmamislar)
+        // Bilgileri geçerli olan (silinmiş olmayan) herkesi listelemeyi sağlayan fonksiyon.
+        private void BasvuranlariListele(TumBasvuranlar tumBasvuranlar)
         {
             if (tumBasvuranlar != null)
             {
                 if (tumBasvuranlar.ad != null)
                 {
                     listBox1.Items.Add(tumBasvuranlar.ad);
-                    filtreUygulanmamislar.ad = tumBasvuranlar.ad;
-                    filtreUygulanmamislar.sag = new FiltreUygulanmislar();
-                    BasvuranlariListele(tumBasvuranlar.sag, filtreUygulanmamislar.sag);
+                    BasvuranlariListele(tumBasvuranlar.sag);
                 }
             }
         }
 
+        // Bilgileri geçerli olan herkes arasında aranan isim var mı yok mu arayan fonksiyon.
         private void IsimeGoreListele(TumBasvuranlar tumBasvuranlar)
         {
             if (textBox1.Text != "" && listBox1.Items.Count != 0)
@@ -716,6 +584,10 @@ namespace IK_Yonetimi
                 if (listBox1.Items.Contains(textBox1.Text))
                 {
                     listBox1.SelectedItem = textBox1.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Aranılan isim bulunamadı");
                 }
             }
         }
@@ -725,10 +597,8 @@ namespace IK_Yonetimi
             if (Başvurular.kok != null)
             {
                 TumBasvuranlar.BasvuranlariDepola(Başvurular.kok, Başvurular.tumBasvuranlar);
-                tumBasvuranlar = new FiltreUygulanmislar();
                 listBox1.Items.Clear();
-                BasvuranlariListele(Başvurular.tumBasvuranlar, tumBasvuranlar);
-                filtrelenenBasvuranlar = Başvurular.tumBasvuranlar;
+                BasvuranlariListele(Başvurular.tumBasvuranlar);
             }
         }
 
@@ -737,8 +607,7 @@ namespace IK_Yonetimi
 
         }
 
-        //uygulamak istediğimiz filtreler listboxta tutuldu. 
-        //buradan alınarak filtreleri uygulama işleminde kullanılacaklar.
+        
         private void filtreekleBtn_Click(object sender, EventArgs e)
         {
             secilenfiltrelerListBox.Items.Add(comboBox1.SelectedItem);
@@ -755,6 +624,7 @@ namespace IK_Yonetimi
             HerkesiListele();
         }
 
+        // Başvuranların bilgileri görüntülenmek istendiği zaman bilgiler ilgili yerlere doldurulup gösteriliyor.
         private void bilgigoruntuleBtn_Click(object sender, EventArgs e)
         {
             Başvurular.PreorderBilgiCek(Başvurular.kok, listBox1.SelectedItem.ToString());
@@ -812,6 +682,7 @@ namespace IK_Yonetimi
         }
     }
 
+    // Bilgileri silinmemiş olan, bilgileri bulunan tüm başvuranların bilgilerinin kolay erişim için tutulduğu yapı.
     public class TumBasvuranlar
     {
         public bool bosmu = true;
@@ -862,6 +733,7 @@ namespace IK_Yonetimi
         }
     }
 
+    // Filtre sonuçlarında filtreyi sağlayanların adlarının tutulduğu yapı.
     public class FiltreUygulanmislar
     {
         public string ad;

@@ -27,10 +27,10 @@ namespace IK_Yonetimi
         private void girisBtn_Click(object sender, EventArgs e)
         {
             Başvurular.PreorderGiris(adTxt.Text, telTxt.Text);
-            if (girisYap)
+            if (girisYap) // Üstteki fonksiyonda true'ya çevrilen bool çevrilmediyse girişi başarısız yapmak için if-else yapısı.
             {
                 MessageBox.Show("Giriş Başarılı!");
-                Başvurular.PreorderBilgiCek(Başvurular.kok, adTxt.Text);
+                Başvurular.PreorderBilgiCek(Başvurular.kok, adTxt.Text); // Form initialize olduğu için başvurana formu göstermeden önce bilgiler dolduruluyor.
                 Hesabım hesabim = new Hesabım();
                 hesabim.Show();
                 girisYap = false;

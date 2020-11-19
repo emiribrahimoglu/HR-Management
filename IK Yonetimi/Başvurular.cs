@@ -8,11 +8,13 @@ using System.Windows.Forms;
 
 namespace IK_Yonetimi
 {
-    public class Başvurular
+    public class Başvurular //Başvuru yapan kişilerle ilgili tüm işlemlerin yapıldığı sınıf yapısı.
     {
-        public static Basvuran kok;
-        public static TumBasvuranlar tumBasvuranlar;
+        public static Basvuran kok; //Kök sabittir ve her yerden rahatça ulaşılmalıdır.
+        public static TumBasvuranlar tumBasvuranlar; // İçi boşaltılmış düğümler dışında tüm geçerli düğümlerin ve içindeki bilgilerin tutulduğu bağlı liste.
 
+        // Başvuran kişinin bilgilerini görebilmesi için başka sınıftaki değişkenlere atama yapıldığı yer. 
+        // Bilgilerini görmek istediğinde buradaki fonksiyon çalışıyor.
         public static void PreorderBilgiCek(Basvuran dugum, string ad)
         {
             if (dugum != null)
@@ -38,11 +40,12 @@ namespace IK_Yonetimi
             }
         }
 
-        public static void PreorderBilgileriSil(int basvuranno, string ad)
+        public static void PreorderBilgileriSil(int basvuranno, string ad) //Asıl fonksiyon için basamak görevi
         {
             PreorderBilgileriSil(kok, basvuranno, ad);
         }
 
+        // Başvuran bilgilerini silmek istediğinde bilgilerinin bulunduğu düğümü silmek zor olacağından onun yerine bilgilerini boşaltıyoruz, pratikte aynı iş.
         public static void PreorderBilgileriSil(Basvuran dugum, int basvuranno, string ad)
         {
             if (dugum != null)
@@ -75,6 +78,7 @@ namespace IK_Yonetimi
 
         }
 
+        // Alttaki asıl güncelleme fonksiyonu için bir basamak görevi görüyor.
         public static void PreorderGuncelle(int basvuranno, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
             string pozisyon, int calismasuresi, string okulAd, string bolum,
@@ -84,6 +88,7 @@ namespace IK_Yonetimi
             baslangic, bitis, notort, enAzLisans);
         }
 
+        // Başvuran kişi bilgilerini güncellemek istediği zaman öncelikle gezinerek ağaçtaki yeri bulunuyor, sonrasında bilgileri güncelleniyor.
         public static void PreorderGuncelle(Basvuran dugum, int basvuranno, string ad, string adres, double tel, string mail,
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres,
             string pozisyon, int calismasuresi, string okulAd, string bolum,
@@ -121,7 +126,7 @@ namespace IK_Yonetimi
             }
         }
 
-        public static void PreorderGiris(string ad, string tel)
+        public static void PreorderGiris(string ad, string tel) // Bir alttaki fonksiyon için buradan oraya sekme görevi görüyor
         {
             if (kok != null)
             {
@@ -133,12 +138,13 @@ namespace IK_Yonetimi
             }
         }
 
-        public static void PreorderGiris(Basvuran dugum, string ad, string tel)
+        public static void PreorderGiris(Basvuran dugum, string ad, string tel) // Girilen giriş bilgileri doğru mu diye PreOrder gezintisiyle kontrol ediliyor
         {
-            if (dugum != null)
+            if (dugum != null) // Gezintide denk geline düğüm tamamen boş mu değil mi (Üzerinde kontrol yapabilir miyiz?)
             {
-                if (!dugum.bosmu)
+                if (!dugum.bosmu) // İçindeki bilgiler bir kullanıcıya aitti de kullanıcının isteği üzerine silinmiş mi?
                 {
+                    //girilen bilgiler doğruysa giriş bu komut çağrıldığı yere geri döndüğünde true yaptığı bool sayesinde giriş işlemi yapılacak
                     if (dugum.ad == ad && dugum.tel.ToString() == tel)
                     {
                         Giris.girisYap = true;
@@ -167,28 +173,29 @@ namespace IK_Yonetimi
             }
             else
             {
+                // Kök boş değil dolayısıyla gezinti işlemi başlanacak ve uygun olan boş dala yeni düğüm eklenecek.
                 Basvuran eklenecek = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort, enAzLisans);
                 PreorderEkle(kok, eklenecek, kok, false);
             }
         }
 
-        public static void PreorderEkle(Basvuran yKok, Basvuran eklenecek, Basvuran ebeveyn, bool solsag) //false sol, true sag
+        public static void PreorderEkle(Basvuran yKok, Basvuran eklenecek, Basvuran ebeveyn, bool solsag) //false sol, true sag ve bool gönderilmesinin sebebi ebeveyn düğümün ne tarafına ekleneceğini bilmek için
         {
-            if (yKok != null)
+            if (yKok != null) //Gezinti sırasında denk geldiğimiz düğümün tamamen boş olmadığından emin oluyoruz ki kontrol sırasında program çökmesin
             {
-                if (!yKok.bosmu)
+                if (!yKok.bosmu) // Gezinti sırasında denk geldiğimiz düğümün içindeki bilgilerin silinip silinmediğine bakıyoruz boş değilse gezintiye devam
                 {
                     if (eklenecek.basvuranNo <= yKok.basvuranNo)
                     {
 
-                        PreorderEkle(yKok.sol, eklenecek, yKok, false);
+                        PreorderEkle(yKok.sol, eklenecek, yKok, false); //yKok gezintide denk gelinen düğüm olduğundan ebeveyn olarak onu gönderiyoruz
                     }
                     else
                     {
-                        PreorderEkle(yKok.sag, eklenecek, yKok, true);
+                        PreorderEkle(yKok.sag, eklenecek, yKok, true); //yKok gezintide denk gelinen düğüm olduğundan ebeveyn olarak onu gönderiyoruz
                     }
                 }
-                else
+                else // Düğüm boş gözüküyorsa ama null değilse sağında ve solunda da null olmayan kök varsa diye bulunduğumuz düğümden aşağısını ekliyoruz
                 {
                     try
                     {
@@ -202,7 +209,7 @@ namespace IK_Yonetimi
                     catch (Exception)
                     { }
                     eklenecek.basvuranNo = yKok.basvuranNo; //Boşaltılmış düğümde hali hazırda basvuranno bulunduğu için onun değişmediğinden emin oluyoruz
-                    yKok.ad = eklenecek.ad;
+                    yKok.ad = eklenecek.ad; // birisi bilgilerini sildiği için bu düğüm boş kaldığından bilgileri değiştiriyoruz
                     yKok.adres = eklenecek.adres;
                     yKok.tel = eklenecek.tel;
                     yKok.mail = eklenecek.mail;
@@ -212,25 +219,16 @@ namespace IK_Yonetimi
                     yKok.isDeneyimi = eklenecek.isDeneyimi;
                     yKok.egitimDurumu = eklenecek.egitimDurumu;
                     yKok.bosmu = false;
-                    /*yKok = eklenecek;
-                    if (solsag)
-                    {
-                        ebeveyn.sag = eklenecek;
-                    }
-                    else
-                    {
-                        ebeveyn.sol = eklenecek;
-                    }*/
                     MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
                 }
             }
-            else
+            else // Gezinti sırasında denk gelinen düğüme daha önce hiç bir düğüm eklenmediyse program buraya geliyor
             {
                 try
                 {
                     if (yKok != null)
                     {
-                        if (yKok.sol != null || yKok.sag != null)
+                        if (yKok.sol != null || yKok.sag != null) //mevcut null düğümün solu sağı da null ama önlem amaçlı yine de eşitliyoruz.
                         {
                             eklenecek.sol = yKok.sol;
                             eklenecek.sag = yKok.sag;
@@ -240,7 +238,7 @@ namespace IK_Yonetimi
                 catch (Exception)
                 { }
                 yKok = eklenecek;
-                if (solsag)
+                if (solsag) //Bulunduğumuz null düğüm bir üst düğümün solu mu sağı mı ona bakıp ekleme işlemini yapıyoruz.
                 {
                     ebeveyn.sag = eklenecek;
                 }
@@ -254,10 +252,11 @@ namespace IK_Yonetimi
         }
     }
 
+    //Buradan itibaren ağaç yapısının bulunduğu, ağaç yapısında her bir düğümde bulunan bilgi ve değişkenlerin oluşturulup belleğe eklendiği yer.
     public class Basvuran
     {
-        public bool bosmu = true;
-        public int basvuranNo;
+        public bool bosmu = true; // bilgi silme işleminden sonra arada kalan düğümün herhangi birisine ait bilgi taşımayacağı için boş olduğunu anlayıp anlamama
+        public int basvuranNo; // Ağaç yapısında sola mı yoksa sağa mı ekleneceğini anlamamızı sağlayan bir değişken
         public string ad;
         public string adres;
         public double tel;
@@ -270,7 +269,9 @@ namespace IK_Yonetimi
         public Basvuran sag;
         public Basvuran sol;
 
-
+        // Bağlı listelere girilecek bilgiler dahil tüm bilgiler bu kurucuya geliyor, bu kurucuda ilgili olanlar eklenip geri kalan bilgilerin "tamamı"
+        // sırasıyla bağlı listelere eklenmesi için onların kurucu fonksiyonlarına gönderiliyor. Bilgiler kurucu fonksiyonundan kurucu fonksiyonuna gönderliliyor
+        // Ta ki tüm bilgiler eklenene kadar.
         public Basvuran(int basvuranNo, string ad, string adres, double tel, string mail, 
             DateTime dt, string ydil, string ehliyet, string isyeriad, string isyeriadres, 
             string pozisyon, int calismasuresi, string okulAd, string bolum, 
@@ -278,7 +279,6 @@ namespace IK_Yonetimi
         {
             if (bosmu)
             {
-                //silme islemi olayını burda halledicez. (bos hücreler)
                 this.basvuranNo = basvuranNo;
                 this.ad = ad;
                 this.adres = adres;
@@ -295,7 +295,7 @@ namespace IK_Yonetimi
 
     }
 
-    // isdeneyimi
+    // isdeneyimi bağlı listesinin başlangıç noktası, aşağıya doğru adım adım tüm bilgiler taşınacak ve eklenecek
     public class IsDeneyimi
     {
         bool bosmu = true;
@@ -345,7 +345,7 @@ namespace IK_Yonetimi
         }
     }
 
-    // eğitim
+    // eğitim bağlı listesinin başlangıç noktası, aşağıya doğru adım adım tüm bilgiler taşınacak ve eklenecek
 
     public class EgitimDurumu
     {
