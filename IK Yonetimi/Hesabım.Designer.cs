@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bilgigoruntuleBtn = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.bilgisilmeBtn = new System.Windows.Forms.Button();
             this.bilgiguncelleBtn = new System.Windows.Forms.Button();
             this.egitim2Lbl = new System.Windows.Forms.Label();
@@ -66,29 +66,25 @@
             this.uyeadresTxt = new System.Windows.Forms.TextBox();
             this.uyeadTxt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.enAzLisans = new System.Windows.Forms.CheckBox();
             this.bitisPicker = new System.Windows.Forms.DateTimePicker();
             this.baslangicPicker = new System.Windows.Forms.DateTimePicker();
             this.dtPicker = new System.Windows.Forms.DateTimePicker();
-            this.enAzLisans = new System.Windows.Forms.CheckBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bilgigoruntuleBtn
-            // 
-            this.bilgigoruntuleBtn.Location = new System.Drawing.Point(9, 19);
-            this.bilgigoruntuleBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.bilgigoruntuleBtn.Name = "bilgigoruntuleBtn";
-            this.bilgigoruntuleBtn.Size = new System.Drawing.Size(185, 99);
-            this.bilgigoruntuleBtn.TabIndex = 0;
-            this.bilgigoruntuleBtn.Text = "Bilgilerimi Görüntüle";
-            this.bilgigoruntuleBtn.UseVisualStyleBackColor = true;
             // 
             // bilgisilmeBtn
             // 
-            this.bilgisilmeBtn.Location = new System.Drawing.Point(9, 123);
+            this.bilgisilmeBtn.Location = new System.Drawing.Point(700, 261);
             this.bilgisilmeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.bilgisilmeBtn.Name = "bilgisilmeBtn";
-            this.bilgisilmeBtn.Size = new System.Drawing.Size(185, 99);
+            this.bilgisilmeBtn.Size = new System.Drawing.Size(75, 46);
             this.bilgisilmeBtn.TabIndex = 1;
             this.bilgisilmeBtn.Text = "Bilgilerimi Sil";
             this.bilgisilmeBtn.UseVisualStyleBackColor = true;
@@ -96,10 +92,10 @@
             // 
             // bilgiguncelleBtn
             // 
-            this.bilgiguncelleBtn.Location = new System.Drawing.Point(410, 258);
+            this.bilgiguncelleBtn.Location = new System.Drawing.Point(393, 258);
             this.bilgiguncelleBtn.Margin = new System.Windows.Forms.Padding(2);
             this.bilgiguncelleBtn.Name = "bilgiguncelleBtn";
-            this.bilgiguncelleBtn.Size = new System.Drawing.Size(88, 49);
+            this.bilgiguncelleBtn.Size = new System.Drawing.Size(83, 46);
             this.bilgiguncelleBtn.TabIndex = 18;
             this.bilgiguncelleBtn.Text = "Bilgilerimi Güncelle";
             this.bilgiguncelleBtn.UseVisualStyleBackColor = true;
@@ -122,6 +118,7 @@
             this.notortTxt.Name = "notortTxt";
             this.notortTxt.Size = new System.Drawing.Size(103, 20);
             this.notortTxt.TabIndex = 17;
+            this.notortTxt.Validating += new System.ComponentModel.CancelEventHandler(this.notortTxt_Validating);
             // 
             // notortLbl
             // 
@@ -344,6 +341,7 @@
             this.calismasuresiTxt.Name = "calismasuresiTxt";
             this.calismasuresiTxt.Size = new System.Drawing.Size(103, 20);
             this.calismasuresiTxt.TabIndex = 12;
+            this.calismasuresiTxt.Validating += new System.ComponentModel.CancelEventHandler(this.calismasuresiTxt_Validating);
             // 
             // isyeriadresTxt
             // 
@@ -387,6 +385,7 @@
             this.uyetelTxt.Name = "uyetelTxt";
             this.uyetelTxt.Size = new System.Drawing.Size(103, 20);
             this.uyetelTxt.TabIndex = 4;
+            this.uyetelTxt.Validating += new System.ComponentModel.CancelEventHandler(this.uyetelTxt_Validating);
             // 
             // ehliyetTxt
             // 
@@ -424,6 +423,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.enAzLisans);
+            this.groupBox1.Controls.Add(this.bilgisilmeBtn);
             this.groupBox1.Controls.Add(this.bitisPicker);
             this.groupBox1.Controls.Add(this.baslangicPicker);
             this.groupBox1.Controls.Add(this.dtPicker);
@@ -463,13 +463,23 @@
             this.groupBox1.Controls.Add(this.yabancidilLbl);
             this.groupBox1.Controls.Add(this.isyeriadLbl);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(199, 11);
+            this.groupBox1.Location = new System.Drawing.Point(8, 7);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(786, 314);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
+            // 
+            // enAzLisans
+            // 
+            this.enAzLisans.AutoSize = true;
+            this.enAzLisans.Location = new System.Drawing.Point(624, 230);
+            this.enAzLisans.Name = "enAzLisans";
+            this.enAzLisans.Size = new System.Drawing.Size(134, 17);
+            this.enAzLisans.TabIndex = 48;
+            this.enAzLisans.Text = "En Az Lisans Mezunu?";
+            this.enAzLisans.UseVisualStyleBackColor = true;
             // 
             // bitisPicker
             // 
@@ -495,37 +505,38 @@
             this.dtPicker.Size = new System.Drawing.Size(151, 20);
             this.dtPicker.TabIndex = 47;
             // 
-            // enAzLisans
+            // errorProvider1
             // 
-            this.enAzLisans.AutoSize = true;
-            this.enAzLisans.Location = new System.Drawing.Point(624, 230);
-            this.enAzLisans.Name = "enAzLisans";
-            this.enAzLisans.Size = new System.Drawing.Size(134, 17);
-            this.enAzLisans.TabIndex = 48;
-            this.enAzLisans.Text = "En Az Lisans Mezunu?";
-            this.enAzLisans.UseVisualStyleBackColor = true;
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
             // 
             // Hesabım
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 350);
+            this.ClientSize = new System.Drawing.Size(805, 332);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.bilgisilmeBtn);
-            this.Controls.Add(this.bilgigoruntuleBtn);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Hesabım";
             this.Text = "Hesabım";
             this.Load += new System.EventHandler(this.Hesabım_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bilgigoruntuleBtn;
         private System.Windows.Forms.Button bilgisilmeBtn;
         private System.Windows.Forms.Button bilgiguncelleBtn;
         private System.Windows.Forms.Label egitim2Lbl;
@@ -567,5 +578,8 @@
         private System.Windows.Forms.DateTimePicker baslangicPicker;
         private System.Windows.Forms.DateTimePicker dtPicker;
         private System.Windows.Forms.CheckBox enAzLisans;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
     }
 }

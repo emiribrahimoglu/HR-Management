@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -12,6 +13,158 @@ namespace IK_Yonetimi
     {
         public static Basvuran kok; //Kök sabittir ve her yerden rahatça ulaşılmalıdır.
         public static TumBasvuranlar tumBasvuranlar; // İçi boşaltılmış düğümler dışında tüm geçerli düğümlerin ve içindeki bilgilerin tutulduğu bağlı liste.
+        public static StreamReader sr; //Dosyadan veri akışı
+
+        public static void PreorderAgaciDosyadanOku()
+        {
+            int basvuranNo;
+            bool bosmu;
+            string ad;
+            string adres;
+            double tel;
+            string mail;
+            DateTime dt;
+            string ydil;
+            string ehliyet;
+            string isyeriad;
+            string isyeriadres;
+            string pozisyon;
+            int calismasuresi;
+            string okulAd;
+            string bolum;
+            DateTime baslangic;
+            DateTime bitis;
+            double notort;
+            bool enAzLisans;
+            if (Başvurular.kok == null)
+            {
+                basvuranNo = Convert.ToInt32(sr.ReadLine());
+                bosmu = Convert.ToBoolean(sr.ReadLine());
+                ad = sr.ReadLine();
+                adres = sr.ReadLine();
+                tel = Convert.ToDouble(sr.ReadLine());
+                mail = sr.ReadLine();
+                dt = Convert.ToDateTime(sr.ReadLine());
+                ydil = sr.ReadLine();
+                ehliyet = sr.ReadLine();
+                isyeriad = sr.ReadLine();
+                isyeriadres = sr.ReadLine();
+                pozisyon = sr.ReadLine();
+                calismasuresi = Convert.ToInt32(sr.ReadLine());
+                okulAd = sr.ReadLine();
+                bolum = sr.ReadLine();
+                baslangic = Convert.ToDateTime(sr.ReadLine());
+                bitis = Convert.ToDateTime(sr.ReadLine());
+                notort = Convert.ToDouble(sr.ReadLine());
+                enAzLisans = Convert.ToBoolean(sr.ReadLine());
+
+                //Gelen bilgilerden direkt olarak kökü doldur.
+                Başvurular.kok = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, 
+                    ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, 
+                    okulAd, bolum, baslangic, bitis, notort, enAzLisans);
+                tumBasvuranlar = new TumBasvuranlar();
+                MessageBox.Show(kok.basvuranNo + " - " + kok.ad);
+            }
+            else
+            {
+                basvuranNo = Convert.ToInt32(sr.ReadLine());
+                bosmu = Convert.ToBoolean(sr.ReadLine());
+                ad = sr.ReadLine();
+                adres = sr.ReadLine();
+                tel = Convert.ToDouble(sr.ReadLine());
+                mail = sr.ReadLine();
+                dt = Convert.ToDateTime(sr.ReadLine());
+                ydil = sr.ReadLine();
+                ehliyet = sr.ReadLine();
+                isyeriad = sr.ReadLine();
+                isyeriadres = sr.ReadLine();
+                pozisyon = sr.ReadLine();
+                calismasuresi = Convert.ToInt32(sr.ReadLine());
+                okulAd = sr.ReadLine();
+                bolum = sr.ReadLine();
+                baslangic = Convert.ToDateTime(sr.ReadLine());
+                bitis = Convert.ToDateTime(sr.ReadLine());
+                notort = Convert.ToDouble(sr.ReadLine());
+                enAzLisans = Convert.ToBoolean(sr.ReadLine());
+
+                //Kök boş değil dolayısıyla gezinti işlemi başlanacak ve uygun olan boş dala yeni düğüm eklenecek.
+                if (basvuranNo != 0)
+                {
+                    Basvuran eklenecek = new Basvuran(basvuranNo, ad, adres, tel, mail, dt, ydil, ehliyet, isyeriad, isyeriadres, pozisyon, calismasuresi, okulAd, bolum, baslangic, bitis, notort, enAzLisans);
+                    PreorderEkle(kok, eklenecek, kok, false);
+                }
+                
+            }
+        }
+
+        public static void IstenilenBasvuranlariDosyayaYaz(TumBasvuranlar dugum, string ad, string dosyaYolu)
+        {
+            if (dugum != null)
+            {
+                if (dugum.ad == ad)
+                {
+                    using (StreamWriter sw = File.AppendText(dosyaYolu))
+                    {
+                        sw.WriteLine("Başvuran Numarası: "+ dugum.basvuranNo.ToString());
+                        sw.WriteLine("Bilgilerin silinip silinmediği: "+dugum.bosmu.ToString());
+                        sw.WriteLine("Başvuranın Adı: "+dugum.ad);
+                        sw.WriteLine("Başvuranın Adresi: "+dugum.adres);
+                        sw.WriteLine("Başvuranın Telefon Numarası"+dugum.tel.ToString());
+                        sw.WriteLine("Başvuranın Mail Adresi: "+dugum.mail);
+                        sw.WriteLine("Başvuranın Doğum Tarihi: "+dugum.dt.Date.ToString());
+                        sw.WriteLine("Başvuranın Bildiği Yabancı Diller: "+dugum.ydil);
+                        sw.WriteLine("Başvuranın Ehliyet Tipi "+dugum.ehliyet);
+                        sw.WriteLine("Başvuranın Çalıştığı İşyerinin Adı: "+dugum.isDeneyimi.isyeriad);
+                        sw.WriteLine("Başvuranın Çalıştığı İşyerinin Adresi: "+dugum.isDeneyimi.sag.isyeriadres);
+                        sw.WriteLine("Başvuranın Çalıştığı İşyerindeki Pozisyonu "+dugum.isDeneyimi.sag.sag.pozisyon);
+                        sw.WriteLine("Başvuranın Çalıştığı İşyerindeki Çalışma Süresi: "+dugum.isDeneyimi.sag.sag.sag.calismasuresi.ToString());
+                        sw.WriteLine("Başvuranın Okuduğu Okulun Adı: "+dugum.egitimDurumu.okulAd);
+                        sw.WriteLine("Başvuranın Okuduğu Bölüm: "+dugum.egitimDurumu.sag.bolum);
+                        sw.WriteLine("Başvuranın Okula Başlama Tarihi "+dugum.egitimDurumu.sag.sag.baslangic.Date.ToString());
+                        sw.WriteLine("Başvuranın Okulu Bitirme Tarihi "+dugum.egitimDurumu.sag.sag.bitis.Date.ToString());
+                        sw.WriteLine("Başvuranın Okulu Bitirdiği Not Ortalaması: "+dugum.egitimDurumu.sag.sag.sag.notort.ToString());
+                        sw.WriteLine("Başvuranın En Az Lisans Mezunu Mu? --> "+dugum.egitimDurumu.enAzLisans.ToString());
+                        sw.WriteLine("///////////////////////////////////");
+                    }
+                }
+                else
+                {
+                    //IstenilenBasvuranlariDosyayaYaz(dugum.sol, ad, dosyaYolu);
+                    IstenilenBasvuranlariDosyayaYaz(dugum.sag, ad, dosyaYolu);
+                }
+            }
+        }
+        public static void PreorderAgaciDosyayaYaz(Basvuran dugum)
+        {
+            if (dugum != null)
+            {
+                using (StreamWriter sw = File.AppendText(Form1.dosyaYolu))
+                {
+                    sw.WriteLine(dugum.basvuranNo.ToString());
+                    sw.WriteLine(dugum.bosmu.ToString());
+                    sw.WriteLine(dugum.ad);
+                    sw.WriteLine(dugum.adres);
+                    sw.WriteLine(dugum.tel.ToString());
+                    sw.WriteLine(dugum.mail);
+                    sw.WriteLine(dugum.dt.ToString());
+                    sw.WriteLine(dugum.ydil);
+                    sw.WriteLine(dugum.ehliyet);
+                    sw.WriteLine(dugum.isDeneyimi.isyeriad);
+                    sw.WriteLine(dugum.isDeneyimi.sag.isyeriadres);
+                    sw.WriteLine(dugum.isDeneyimi.sag.sag.pozisyon);
+                    sw.WriteLine(dugum.isDeneyimi.sag.sag.sag.calismasuresi.ToString());
+                    sw.WriteLine(dugum.egitimDurumu.okulAd);
+                    sw.WriteLine(dugum.egitimDurumu.sag.bolum);
+                    sw.WriteLine(dugum.egitimDurumu.sag.sag.baslangic.ToString());
+                    sw.WriteLine(dugum.egitimDurumu.sag.sag.bitis.ToString());
+                    sw.WriteLine(dugum.egitimDurumu.sag.sag.sag.notort.ToString());
+                    sw.WriteLine(dugum.egitimDurumu.enAzLisans.ToString());
+                    sw.WriteLine("///////////////////////////////////");
+                }
+                PreorderAgaciDosyayaYaz(dugum.sol);
+                PreorderAgaciDosyayaYaz(dugum.sag);
+            }
+        }
 
         // Başvuran kişinin bilgilerini görebilmesi için başka sınıftaki değişkenlere atama yapıldığı yer. 
         // Bilgilerini görmek istediğinde buradaki fonksiyon çalışıyor.
@@ -60,6 +213,8 @@ namespace IK_Yonetimi
                         dugum.tel = 0;
                         dugum.mail = "";
                         dugum.dt = DateTime.MinValue;
+                        dugum.ydil = "";
+                        dugum.ehliyet = "";
                         dugum.isDeneyimi.isyeriad = "";
                         dugum.isDeneyimi.sag.isyeriadres = "";
                         dugum.isDeneyimi.sag.sag.pozisyon = "";
@@ -399,17 +554,6 @@ namespace IK_Yonetimi
         public EgitimDurumuNotOrt(double notort)
         {
             this.notort = notort;
-        }
-    }
-
-    public class BasvuranAdlari
-    {
-        public string ad;
-        public BasvuranAdlari sag;
-
-        public BasvuranAdlari(string ad)
-        {
-            this.ad = ad;
         }
     }
 

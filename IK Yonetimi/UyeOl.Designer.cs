@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.uyeadTxt = new System.Windows.Forms.TextBox();
             this.uyeadresTxt = new System.Windows.Forms.TextBox();
             this.uyeepostaTxt = new System.Windows.Forms.TextBox();
@@ -67,20 +68,26 @@
             this.egitimBaslangicTarihi = new System.Windows.Forms.DateTimePicker();
             this.egitimBitisTarihi = new System.Windows.Forms.DateTimePicker();
             this.enAzLisans = new System.Windows.Forms.CheckBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
             // 
             // uyeadTxt
             // 
             this.uyeadTxt.Location = new System.Drawing.Point(92, 64);
-            this.uyeadTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeadTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeadTxt.Name = "uyeadTxt";
-            this.uyeadTxt.Size = new System.Drawing.Size(76, 20);
+            this.uyeadTxt.Size = new System.Drawing.Size(130, 20);
             this.uyeadTxt.TabIndex = 0;
             // 
             // uyeadresTxt
             // 
             this.uyeadresTxt.Location = new System.Drawing.Point(92, 94);
-            this.uyeadresTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeadresTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeadresTxt.Multiline = true;
             this.uyeadresTxt.Name = "uyeadresTxt";
             this.uyeadresTxt.Size = new System.Drawing.Size(103, 53);
@@ -89,7 +96,7 @@
             // uyeepostaTxt
             // 
             this.uyeepostaTxt.Location = new System.Drawing.Point(92, 207);
-            this.uyeepostaTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeepostaTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyeepostaTxt.Name = "uyeepostaTxt";
             this.uyeepostaTxt.Size = new System.Drawing.Size(103, 20);
             this.uyeepostaTxt.TabIndex = 3;
@@ -97,15 +104,16 @@
             // uyetelTxt
             // 
             this.uyetelTxt.Location = new System.Drawing.Point(92, 177);
-            this.uyetelTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyetelTxt.Margin = new System.Windows.Forms.Padding(2);
             this.uyetelTxt.Name = "uyetelTxt";
             this.uyetelTxt.Size = new System.Drawing.Size(103, 20);
             this.uyetelTxt.TabIndex = 2;
+            this.uyetelTxt.Validating += new System.ComponentModel.CancelEventHandler(this.uyetelTxt_Validating);
             // 
             // yabancidilTxt
             // 
             this.yabancidilTxt.Location = new System.Drawing.Point(92, 266);
-            this.yabancidilTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.yabancidilTxt.Margin = new System.Windows.Forms.Padding(2);
             this.yabancidilTxt.Name = "yabancidilTxt";
             this.yabancidilTxt.Size = new System.Drawing.Size(103, 20);
             this.yabancidilTxt.TabIndex = 5;
@@ -113,7 +121,7 @@
             // ehliyetTxt
             // 
             this.ehliyetTxt.Location = new System.Drawing.Point(92, 288);
-            this.ehliyetTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ehliyetTxt.Margin = new System.Windows.Forms.Padding(2);
             this.ehliyetTxt.Name = "ehliyetTxt";
             this.ehliyetTxt.Size = new System.Drawing.Size(103, 20);
             this.ehliyetTxt.TabIndex = 6;
@@ -121,7 +129,7 @@
             // isyeriadTxt
             // 
             this.isyeriadTxt.Location = new System.Drawing.Point(428, 94);
-            this.isyeriadTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeriadTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeriadTxt.Name = "isyeriadTxt";
             this.isyeriadTxt.Size = new System.Drawing.Size(103, 20);
             this.isyeriadTxt.TabIndex = 7;
@@ -259,7 +267,7 @@
             // isyeriadresTxt
             // 
             this.isyeriadresTxt.Location = new System.Drawing.Point(428, 127);
-            this.isyeriadresTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeriadresTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeriadresTxt.Multiline = true;
             this.isyeriadresTxt.Name = "isyeriadresTxt";
             this.isyeriadresTxt.Size = new System.Drawing.Size(103, 53);
@@ -268,15 +276,16 @@
             // calismasuresiTxt
             // 
             this.calismasuresiTxt.Location = new System.Drawing.Point(428, 230);
-            this.calismasuresiTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.calismasuresiTxt.Margin = new System.Windows.Forms.Padding(2);
             this.calismasuresiTxt.Name = "calismasuresiTxt";
             this.calismasuresiTxt.Size = new System.Drawing.Size(103, 20);
             this.calismasuresiTxt.TabIndex = 10;
+            this.calismasuresiTxt.Validating += new System.ComponentModel.CancelEventHandler(this.calismasuresiTxt_Validating);
             // 
             // isyeripozisyonTxt
             // 
             this.isyeripozisyonTxt.Location = new System.Drawing.Point(428, 200);
-            this.isyeripozisyonTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isyeripozisyonTxt.Margin = new System.Windows.Forms.Padding(2);
             this.isyeripozisyonTxt.Name = "isyeripozisyonTxt";
             this.isyeripozisyonTxt.Size = new System.Drawing.Size(103, 20);
             this.isyeripozisyonTxt.TabIndex = 9;
@@ -314,7 +323,7 @@
             // okuladTxt
             // 
             this.okuladTxt.Location = new System.Drawing.Point(829, 85);
-            this.okuladTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okuladTxt.Margin = new System.Windows.Forms.Padding(2);
             this.okuladTxt.Name = "okuladTxt";
             this.okuladTxt.Size = new System.Drawing.Size(103, 20);
             this.okuladTxt.TabIndex = 11;
@@ -342,7 +351,7 @@
             // bolumTxt
             // 
             this.bolumTxt.Location = new System.Drawing.Point(829, 115);
-            this.bolumTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bolumTxt.Margin = new System.Windows.Forms.Padding(2);
             this.bolumTxt.Name = "bolumTxt";
             this.bolumTxt.Size = new System.Drawing.Size(103, 20);
             this.bolumTxt.TabIndex = 12;
@@ -370,10 +379,11 @@
             // notortTxt
             // 
             this.notortTxt.Location = new System.Drawing.Point(829, 207);
-            this.notortTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.notortTxt.Margin = new System.Windows.Forms.Padding(2);
             this.notortTxt.Name = "notortTxt";
             this.notortTxt.Size = new System.Drawing.Size(103, 20);
             this.notortTxt.TabIndex = 15;
+            this.notortTxt.Validating += new System.ComponentModel.CancelEventHandler(this.notortTxt_Validating);
             // 
             // egitim2Lbl
             // 
@@ -388,7 +398,7 @@
             // uyeolBtn
             // 
             this.uyeolBtn.Location = new System.Drawing.Point(420, 318);
-            this.uyeolBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uyeolBtn.Margin = new System.Windows.Forms.Padding(2);
             this.uyeolBtn.Name = "uyeolBtn";
             this.uyeolBtn.Size = new System.Drawing.Size(130, 46);
             this.uyeolBtn.TabIndex = 16;
@@ -426,6 +436,18 @@
             this.enAzLisans.TabIndex = 17;
             this.enAzLisans.Text = "En Az Lisans Mezunu?";
             this.enAzLisans.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
             // 
             // UyeOl
             // 
@@ -471,9 +493,12 @@
             this.Controls.Add(this.uyeepostaTxt);
             this.Controls.Add(this.uyeadresTxt);
             this.Controls.Add(this.uyeadTxt);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UyeOl";
             this.Text = "UyeOl";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,5 +545,8 @@
         private System.Windows.Forms.DateTimePicker egitimBaslangicTarihi;
         private System.Windows.Forms.DateTimePicker egitimBitisTarihi;
         private System.Windows.Forms.CheckBox enAzLisans;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
     }
 }

@@ -67,6 +67,33 @@ namespace IK_Yonetimi
                 
             }
         }
+
+        private void uyetelTxt_Validating(object sender, CancelEventArgs e)
+        {
+            double deger;
+            if (!double.TryParse(uyetelTxt.Text, out deger))
+            {
+                errorProvider1.SetError(uyetelTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
+
+        private void calismasuresiTxt_Validating(object sender, CancelEventArgs e)
+        {
+            int deger;
+            if (!int.TryParse(calismasuresiTxt.Text, out deger))
+            {
+                errorProvider2.SetError(calismasuresiTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
+
+        private void notortTxt_Validating(object sender, CancelEventArgs e)
+        {
+            double deger;
+            if (!double.TryParse(notortTxt.Text, out deger))
+            {
+                errorProvider3.SetError(notortTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
     }
 
     public class BasvuranBilgileri // Başvuran kişinin bilgilerinin tutulduğu sınıf

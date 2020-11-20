@@ -41,5 +41,14 @@ namespace IK_Yonetimi
             }
             
         }
+
+        private void telTxt_Validating(object sender, CancelEventArgs e)
+        {
+            double deger;
+            if (!double.TryParse(telTxt.Text, out deger))
+            {
+                errorProvider1.SetError(telTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
     }
 }

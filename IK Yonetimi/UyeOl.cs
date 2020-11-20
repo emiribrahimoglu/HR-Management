@@ -26,5 +26,47 @@ namespace IK_Yonetimi
                 bolumTxt.Text, egitimBaslangicTarihi.Value, egitimBitisTarihi.Value, Convert.ToDouble(notortTxt.Text), enAzLisans.Checked);
             this.Close();
         }
+
+        private void uyetelTxt_Validating(object sender, CancelEventArgs e)
+        {
+            double deger;
+            if (!double.TryParse(uyetelTxt.Text, out deger))
+            {
+                errorProvider1.SetError(uyetelTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
+
+        private void calismasuresiTxt_Validating(object sender, CancelEventArgs e)
+        {
+            int deger;
+            if (!int.TryParse(calismasuresiTxt.Text, out deger))
+            {
+                errorProvider2.SetError(calismasuresiTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
+
+        private void notortTxt_Validating(object sender, CancelEventArgs e)
+        {
+            double deger;
+            if (!double.TryParse(notortTxt.Text, out deger))
+            {
+                errorProvider3.SetError(notortTxt, "Sadece rakam bulundurmalıdır! (Nokta işareti yardımıyıla ondalıklı sayı olabilir)");
+            }
+        }
+
+        private void uyetelTxt_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+        }
+
+        private void calismasuresiTxt_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider2.Clear();
+        }
+
+        private void notortTxt_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider3.Clear();
+        }
     }
 }

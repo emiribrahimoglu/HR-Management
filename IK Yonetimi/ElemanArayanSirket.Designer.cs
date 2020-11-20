@@ -87,7 +87,14 @@
             this.bilgigoruntuleBtn = new System.Windows.Forms.Button();
             this.herkesiListeleBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.filtreSonuclariniKaydet = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.basvuranSayisiTxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -96,7 +103,7 @@
             this.listBox1.Location = new System.Drawing.Point(9, 49);
             this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(219, 303);
+            this.listBox1.Size = new System.Drawing.Size(230, 303);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -127,7 +134,7 @@
             "İngilizce bilenler",
             "Birden fazla yabancı dil bilenler",
             "Deneyimsizler"});
-            this.comboBox1.Location = new System.Drawing.Point(245, 49);
+            this.comboBox1.Location = new System.Drawing.Point(255, 54);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(137, 21);
@@ -141,6 +148,7 @@
             this.mindeneyimTxt.Name = "mindeneyimTxt";
             this.mindeneyimTxt.Size = new System.Drawing.Size(76, 20);
             this.mindeneyimTxt.TabIndex = 4;
+            this.mindeneyimTxt.Validating += new System.ComponentModel.CancelEventHandler(this.mindeneyimTxt_Validating);
             // 
             // label1
             // 
@@ -169,6 +177,7 @@
             this.belirliyasaltiTxt.Name = "belirliyasaltiTxt";
             this.belirliyasaltiTxt.Size = new System.Drawing.Size(76, 20);
             this.belirliyasaltiTxt.TabIndex = 5;
+            this.belirliyasaltiTxt.Validating += new System.ComponentModel.CancelEventHandler(this.belirliyasaltiTxt_Validating);
             // 
             // label3
             // 
@@ -202,7 +211,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(272, 28);
+            this.label5.Location = new System.Drawing.Point(282, 33);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
@@ -212,7 +221,7 @@
             // secilenfiltrelerListBox
             // 
             this.secilenfiltrelerListBox.FormattingEnabled = true;
-            this.secilenfiltrelerListBox.Location = new System.Drawing.Point(476, 49);
+            this.secilenfiltrelerListBox.Location = new System.Drawing.Point(506, 49);
             this.secilenfiltrelerListBox.Margin = new System.Windows.Forms.Padding(2);
             this.secilenfiltrelerListBox.Name = "secilenfiltrelerListBox";
             this.secilenfiltrelerListBox.Size = new System.Drawing.Size(98, 134);
@@ -222,7 +231,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(484, 32);
+            this.label6.Location = new System.Drawing.Point(514, 32);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
@@ -231,21 +240,21 @@
             // 
             // filtreekleBtn
             // 
-            this.filtreekleBtn.Location = new System.Drawing.Point(285, 187);
+            this.filtreekleBtn.Location = new System.Drawing.Point(404, 54);
             this.filtreekleBtn.Margin = new System.Windows.Forms.Padding(2);
             this.filtreekleBtn.Name = "filtreekleBtn";
             this.filtreekleBtn.Size = new System.Drawing.Size(98, 24);
             this.filtreekleBtn.TabIndex = 7;
-            this.filtreekleBtn.Text = "Filtre Ekle";
+            this.filtreekleBtn.Text = "--> Filtre Ekle -->";
             this.filtreekleBtn.UseVisualStyleBackColor = true;
             this.filtreekleBtn.Click += new System.EventHandler(this.filtreekleBtn_Click);
             // 
             // filtreleriuygulaBtn
             // 
-            this.filtreleriuygulaBtn.Location = new System.Drawing.Point(476, 187);
+            this.filtreleriuygulaBtn.Location = new System.Drawing.Point(404, 187);
             this.filtreleriuygulaBtn.Margin = new System.Windows.Forms.Padding(2);
             this.filtreleriuygulaBtn.Name = "filtreleriuygulaBtn";
-            this.filtreleriuygulaBtn.Size = new System.Drawing.Size(97, 24);
+            this.filtreleriuygulaBtn.Size = new System.Drawing.Size(98, 24);
             this.filtreleriuygulaBtn.TabIndex = 9;
             this.filtreleriuygulaBtn.Text = "Filtreleri Uygula";
             this.filtreleriuygulaBtn.UseVisualStyleBackColor = true;
@@ -292,7 +301,7 @@
             this.groupBox1.Controls.Add(this.yabancidilLbl);
             this.groupBox1.Controls.Add(this.isyeriadLbl);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(578, 11);
+            this.groupBox1.Location = new System.Drawing.Point(608, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -671,10 +680,10 @@
             // bilgigoruntuleBtn
             // 
             this.bilgigoruntuleBtn.Enabled = false;
-            this.bilgigoruntuleBtn.Location = new System.Drawing.Point(232, 303);
+            this.bilgigoruntuleBtn.Location = new System.Drawing.Point(172, 356);
             this.bilgigoruntuleBtn.Margin = new System.Windows.Forms.Padding(2);
             this.bilgigoruntuleBtn.Name = "bilgigoruntuleBtn";
-            this.bilgigoruntuleBtn.Size = new System.Drawing.Size(88, 49);
+            this.bilgigoruntuleBtn.Size = new System.Drawing.Size(69, 36);
             this.bilgigoruntuleBtn.TabIndex = 49;
             this.bilgigoruntuleBtn.Text = "Bilgileri Görüntüle";
             this.bilgigoruntuleBtn.UseVisualStyleBackColor = true;
@@ -695,11 +704,53 @@
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
+            // filtreSonuclariniKaydet
+            // 
+            this.filtreSonuclariniKaydet.Location = new System.Drawing.Point(72, 356);
+            this.filtreSonuclariniKaydet.Margin = new System.Windows.Forms.Padding(2);
+            this.filtreSonuclariniKaydet.Name = "filtreSonuclariniKaydet";
+            this.filtreSonuclariniKaydet.Size = new System.Drawing.Size(96, 36);
+            this.filtreSonuclariniKaydet.TabIndex = 51;
+            this.filtreSonuclariniKaydet.Text = "Filtre Sonuçlarını Kaydet";
+            this.filtreSonuclariniKaydet.UseVisualStyleBackColor = true;
+            this.filtreSonuclariniKaydet.Click += new System.EventHandler(this.filtreSonuclariniKaydet_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // basvuranSayisiTxt
+            // 
+            this.basvuranSayisiTxt.Enabled = false;
+            this.basvuranSayisiTxt.Location = new System.Drawing.Point(476, 215);
+            this.basvuranSayisiTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.basvuranSayisiTxt.Name = "basvuranSayisiTxt";
+            this.basvuranSayisiTxt.Size = new System.Drawing.Size(28, 20);
+            this.basvuranSayisiTxt.TabIndex = 52;
+            this.basvuranSayisiTxt.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(390, 219);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 53;
+            this.label7.Text = "Başvuran Sayısı";
+            // 
             // ElemanArayanSirket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1406, 657);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.basvuranSayisiTxt);
+            this.Controls.Add(this.filtreSonuclariniKaydet);
             this.Controls.Add(this.herkesiListeleBtn);
             this.Controls.Add(this.bilgigoruntuleBtn);
             this.Controls.Add(this.groupBox1);
@@ -725,6 +776,8 @@
             this.Load += new System.EventHandler(this.ElemanArayanSirket_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,5 +843,10 @@
         private System.Windows.Forms.Button bilgigoruntuleBtn;
         private System.Windows.Forms.Button herkesiListeleBtn;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button filtreSonuclariniKaydet;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox basvuranSayisiTxt;
     }
 }

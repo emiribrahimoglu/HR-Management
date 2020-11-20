@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -596,9 +597,11 @@ namespace IK_Yonetimi
         {
             if (Başvurular.kok != null)
             {
+                Başvurular.tumBasvuranlar = new TumBasvuranlar();
                 TumBasvuranlar.BasvuranlariDepola(Başvurular.kok, Başvurular.tumBasvuranlar);
                 listBox1.Items.Clear();
                 BasvuranlariListele(Başvurular.tumBasvuranlar);
+                basvuranSayisiTxt.Text = listBox1.Items.Count.ToString();
             }
         }
 
@@ -680,6 +683,48 @@ namespace IK_Yonetimi
         {
             toolTip1.Show("Ehliyet tipi filtresini diğer filtrelerle birlikte kullanmayınız!", ehliyetTxt);
         }
+
+        private void filtreSonuclariniKaydet_Click(object sender, EventArgs e)
+        {
+            string dosyaYolu = null;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = ".txt Dosyaları (*.txt)|*.txt";
+            sfd.Title = "Filtre Sonuçlarındaki kişilerin bilgilerinin kaydedileceği yeri belirtin";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (listBox1.Items.Count > 0)
+                {
+                    dosyaYolu = sfd.FileName;
+                    File.Create(dosyaYolu).Dispose();
+                    for (int i = 0; i < listBox1.Items.Count; i++)
+                    {
+                        Başvurular.IstenilenBasvuranlariDosyayaYaz(Başvurular.tumBasvuranlar, listBox1.Items[i].ToString(), dosyaYolu);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Filtreleme işlemine uygun hiçbir aday bulunmamaktadır!");
+                }
+            }
+        }
+
+        private void mindeneyimTxt_Validating(object sender, CancelEventArgs e)
+        {
+            int deger;
+            if (!int.TryParse(mindeneyimTxt.Text, out deger))
+            {
+                errorProvider1.SetError(mindeneyimTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
+
+        private void belirliyasaltiTxt_Validating(object sender, CancelEventArgs e)
+        {
+            int deger;
+            if (!int.TryParse(belirliyasaltiTxt.Text, out deger))
+            {
+                errorProvider2.SetError(belirliyasaltiTxt, "Sadece rakam bulundurmalıdır!");
+            }
+        }
     }
 
     // Bilgileri silinmemiş olan, bilgileri bulunan tüm başvuranların bilgilerinin kolay erişim için tutulduğu yapı.
@@ -721,7 +766,15 @@ namespace IK_Yonetimi
                     tumBasvuranlar.egitimDurumu = dugum.egitimDurumu;
                     tumBasvuranlar.sag = new TumBasvuranlar();
                     BasvuranlariDepola(dugum.sol, tumBasvuranlar.sag);
-                    BasvuranlariDepola(dugum.sag, tumBasvuranlar.sag);
+                    if (tumBasvuranlar.sag.ad == null)
+                    {
+                        BasvuranlariDepola(dugum.sag, tumBasvuranlar.sag);
+                    }
+                    else
+                    {
+                        BasvuranlariDepola(dugum.sag, tumBasvuranlar.sag.sag);
+                    }
+                    
 
                 }
                 else
