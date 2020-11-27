@@ -30,12 +30,12 @@ namespace IK_Yonetimi
         {
             using (Başvurular.sr)
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = ".txt Dosyaları (*.txt)|*.txt";
-                sfd.Title = "Başvuranların bilgisinin okunacağı dosyayı seçin";
-                if (sfd.ShowDialog() == DialogResult.OK)
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = ".txt Dosyaları (*.txt)|*.txt";
+                ofd.Title = "Başvuranların bilgisinin okunacağı dosyayı seçin";
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    Başvurular.sr = new StreamReader(sfd.FileName);
+                    Başvurular.sr = new StreamReader(ofd.FileName);
                 }
                 do
                 {

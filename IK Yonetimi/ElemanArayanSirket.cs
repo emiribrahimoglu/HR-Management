@@ -748,6 +748,43 @@ namespace IK_Yonetimi
             bosmu = false;
         }
 
+        public static void BasvuranlariDepola(Basvuran dugum, TumBasvuranlar tumBasvuranlar, bool boolean)
+        {
+            if (dugum != null)
+            {
+                if (tumBasvuranlar.ad == null)
+                {
+                    if (!dugum.bosmu)
+                    {
+                        tumBasvuranlar.bosmu = dugum.bosmu;
+                        tumBasvuranlar.basvuranNo = dugum.basvuranNo;
+                        tumBasvuranlar.ad = dugum.ad;
+                        tumBasvuranlar.adres = dugum.adres;
+                        tumBasvuranlar.tel = dugum.tel;
+                        tumBasvuranlar.mail = dugum.mail;
+                        tumBasvuranlar.dt = dugum.dt;
+                        tumBasvuranlar.ydil = dugum.ydil;
+                        tumBasvuranlar.ehliyet = dugum.ehliyet;
+                        tumBasvuranlar.isDeneyimi = dugum.isDeneyimi;
+                        tumBasvuranlar.egitimDurumu = dugum.egitimDurumu;
+                        tumBasvuranlar.sag = new TumBasvuranlar();
+                        BasvuranlariDepola(dugum.sol, Başvurular.tumBasvuranlar, true);
+                        BasvuranlariDepola(dugum.sag, Başvurular.tumBasvuranlar, true);
+                    }
+                    else
+                    {
+                        BasvuranlariDepola(dugum.sol, Başvurular.tumBasvuranlar, true);
+                        BasvuranlariDepola(dugum.sag, Başvurular.tumBasvuranlar, true);
+                    }
+                    
+                }
+                else
+                {
+                    BasvuranlariDepola(dugum, tumBasvuranlar.sag, true);
+                }
+            }
+        }
+
         public static void BasvuranlariDepola(Basvuran dugum, TumBasvuranlar tumBasvuranlar)
         {
             if (dugum != null)
@@ -759,21 +796,23 @@ namespace IK_Yonetimi
                     tumBasvuranlar.ad = dugum.ad;
                     tumBasvuranlar.adres = dugum.adres;
                     tumBasvuranlar.tel = dugum.tel;
+                    tumBasvuranlar.mail = dugum.mail;
                     tumBasvuranlar.dt = dugum.dt;
                     tumBasvuranlar.ydil = dugum.ydil;
                     tumBasvuranlar.ehliyet = dugum.ehliyet;
                     tumBasvuranlar.isDeneyimi = dugum.isDeneyimi;
                     tumBasvuranlar.egitimDurumu = dugum.egitimDurumu;
                     tumBasvuranlar.sag = new TumBasvuranlar();
-                    BasvuranlariDepola(dugum.sol, tumBasvuranlar.sag);
-                    if (tumBasvuranlar.sag.ad == null)
+                    BasvuranlariDepola(dugum.sol, Başvurular.tumBasvuranlar, true);
+                    BasvuranlariDepola(dugum.sag, Başvurular.tumBasvuranlar, true);
+                    /*if (tumBasvuranlar.sag.ad == null)
                     {
                         BasvuranlariDepola(dugum.sag, tumBasvuranlar.sag);
                     }
                     else
                     {
-                        BasvuranlariDepola(dugum.sag, tumBasvuranlar.sag.sag);
-                    }
+                        BasvuranlariDepola(dugum.sag, tumBasvuranlar.sag.sag, true);
+                    }*/
                     
 
                 }

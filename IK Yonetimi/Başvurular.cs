@@ -106,24 +106,32 @@ namespace IK_Yonetimi
                     using (StreamWriter sw = File.AppendText(dosyaYolu))
                     {
                         sw.WriteLine("Başvuran Numarası: "+ dugum.basvuranNo.ToString());
-                        sw.WriteLine("Bilgilerin silinip silinmediği: "+dugum.bosmu.ToString());
+                        //sw.WriteLine("Bilgilerin silinip silinmediği: "+dugum.bosmu.ToString());
                         sw.WriteLine("Başvuranın Adı: "+dugum.ad);
                         sw.WriteLine("Başvuranın Adresi: "+dugum.adres);
-                        sw.WriteLine("Başvuranın Telefon Numarası"+dugum.tel.ToString());
-                        sw.WriteLine("Başvuranın Mail Adresi: "+dugum.mail);
-                        sw.WriteLine("Başvuranın Doğum Tarihi: "+dugum.dt.Date.ToString());
+                        sw.WriteLine("Başvuranın Telefon Numarası: "+dugum.tel.ToString());
+                        sw.WriteLine("Başvuranın Mail Adresi: "+dugum.mail.ToString());
+                        sw.WriteLine("Başvuranın Doğum Tarihi: "+dugum.dt.Date.ToShortDateString());
                         sw.WriteLine("Başvuranın Bildiği Yabancı Diller: "+dugum.ydil);
-                        sw.WriteLine("Başvuranın Ehliyet Tipi "+dugum.ehliyet);
+                        sw.WriteLine("Başvuranın Ehliyet Tipi: "+dugum.ehliyet);
                         sw.WriteLine("Başvuranın Çalıştığı İşyerinin Adı: "+dugum.isDeneyimi.isyeriad);
                         sw.WriteLine("Başvuranın Çalıştığı İşyerinin Adresi: "+dugum.isDeneyimi.sag.isyeriadres);
-                        sw.WriteLine("Başvuranın Çalıştığı İşyerindeki Pozisyonu "+dugum.isDeneyimi.sag.sag.pozisyon);
-                        sw.WriteLine("Başvuranın Çalıştığı İşyerindeki Çalışma Süresi: "+dugum.isDeneyimi.sag.sag.sag.calismasuresi.ToString());
+                        sw.WriteLine("Başvuranın Çalıştığı İşyerindeki Pozisyonu: "+dugum.isDeneyimi.sag.sag.pozisyon);
+                        sw.WriteLine("Başvuranın Çalıştığı İşyerindeki Çalışma Süresi: "+dugum.isDeneyimi.sag.sag.sag.calismasuresi.ToString() + " Ay");
                         sw.WriteLine("Başvuranın Okuduğu Okulun Adı: "+dugum.egitimDurumu.okulAd);
                         sw.WriteLine("Başvuranın Okuduğu Bölüm: "+dugum.egitimDurumu.sag.bolum);
-                        sw.WriteLine("Başvuranın Okula Başlama Tarihi "+dugum.egitimDurumu.sag.sag.baslangic.Date.ToString());
-                        sw.WriteLine("Başvuranın Okulu Bitirme Tarihi "+dugum.egitimDurumu.sag.sag.bitis.Date.ToString());
+                        sw.WriteLine("Başvuranın Okula Başlama Tarihi: "+dugum.egitimDurumu.sag.sag.baslangic.Date.ToShortDateString());
+                        sw.WriteLine("Başvuranın Okulu Bitirme Tarihi: "+dugum.egitimDurumu.sag.sag.bitis.Date.ToShortDateString());
                         sw.WriteLine("Başvuranın Okulu Bitirdiği Not Ortalaması: "+dugum.egitimDurumu.sag.sag.sag.notort.ToString());
-                        sw.WriteLine("Başvuranın En Az Lisans Mezunu Mu? --> "+dugum.egitimDurumu.enAzLisans.ToString());
+                        if (dugum.egitimDurumu.enAzLisans)
+                        {
+                            sw.WriteLine("Başvuranın En Az Lisans Mezunu Mu? --> " + "Evet");
+                        }
+                        else
+                        {
+                            sw.WriteLine("Başvuranın En Az Lisans Mezunu Mu? --> " + "Hayır");
+                        }
+                        //sw.WriteLine("Başvuranın En Az Lisans Mezunu Mu? --> "+dugum.egitimDurumu.enAzLisans.ToString());
                         sw.WriteLine("///////////////////////////////////");
                     }
                 }
@@ -187,6 +195,11 @@ namespace IK_Yonetimi
                         BasvuranBilgileri.isDeneyimi = dugum.isDeneyimi;
                         BasvuranBilgileri.egitimDurumu = dugum.egitimDurumu;
                     }
+                    PreorderBilgiCek(dugum.sol, ad);
+                    PreorderBilgiCek(dugum.sag, ad);
+                }
+                else
+                {
                     PreorderBilgiCek(dugum.sol, ad);
                     PreorderBilgiCek(dugum.sag, ad);
                 }
@@ -374,7 +387,7 @@ namespace IK_Yonetimi
                     yKok.isDeneyimi = eklenecek.isDeneyimi;
                     yKok.egitimDurumu = eklenecek.egitimDurumu;
                     yKok.bosmu = false;
-                    MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
+                    //MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
                 }
             }
             else // Gezinti sırasında denk gelinen düğüme daha önce hiç bir düğüm eklenmediyse program buraya geliyor
@@ -401,7 +414,7 @@ namespace IK_Yonetimi
                 {
                     ebeveyn.sol = eklenecek;
                 }
-                MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
+                //MessageBox.Show(yKok.basvuranNo + " - " + yKok.ad);
             }
             
         }
