@@ -364,7 +364,7 @@ namespace IK_Yonetimi
                     }*/
                     if (filtreNum == 7)
                     {
-                        if (tumBasvuranlar.ehliyet == ehliyetTxt.Text)
+                        if (tumBasvuranlar.ehliyet.Contains(ehliyetTxt.Text))
                         {
                             listBox1.Items.Add(tumBasvuranlar.ad);
                         }
